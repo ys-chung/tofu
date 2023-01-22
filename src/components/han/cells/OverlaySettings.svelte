@@ -17,7 +17,7 @@
           <input
             type="checkbox"
             value={langAttr}
-            class="h-3 w-3 appearance-none border border-slate-400 bg-opacity-0 transition checked:border-none checked:bg-opacity-100 checked:transition-none group-hover:bg-opacity-10 checked:group-hover:bg-opacity-100"
+            class="h-3 w-3 appearance-none rounded-none border border-slate-400 bg-opacity-0 transition checked:border-none checked:bg-opacity-100 checked:transition-none group-hover:bg-opacity-10 checked:group-hover:bg-opacity-100"
             class:bg-red-500={colour === "red"}
             class:bg-yellow-500={colour === "yellow"}
             class:bg-green-500={colour === "green"}
