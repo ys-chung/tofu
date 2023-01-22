@@ -17,5 +17,12 @@
     "astro": "^1.9.0",
     "svelte": "^3.55.1",
     "tailwindcss": "^3.2.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.3",
+    "prettier-plugin-astro": "^0.7.2",
+    "prettier-plugin-svelte": "^2.9.0",
+    "prettier-plugin-tailwindcss": "^0.2.1",
+    "tailwindcss-text-fill-stroke": "^1.1.2"
   }
 }
