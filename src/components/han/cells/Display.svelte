@@ -13,7 +13,7 @@
   <div
     class="absolute inset-0 flex items-center justify-center text-7xl transition-[font-weight] duration-[5ms] sm:text-9xl"
     lang={langAttr}
-    style="font-weight: {$weight}; font-family: {fontName}"
+    style="font-variation-settings: 'wght' {$weight}; font-family: {fontName}"
   >
     {$displayChar}
   </div>

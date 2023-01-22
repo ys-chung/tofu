@@ -31,7 +31,7 @@
       class:text-opacity-100={$overlayRegions[placeName] &&
         $overlayDisplay === "solid"}
       lang={langAttr}
-      style="font-weight: {$weight}; font-family: {fontName}"
+      style="font-variation-settings: 'wght' {$weight}; font-family: {fontName}"
     >
       {$displayChar}
     </div>
