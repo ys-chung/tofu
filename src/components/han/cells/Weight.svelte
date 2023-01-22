@@ -12,32 +12,33 @@
   }
 
   let w: number = 400
+  let sliderWidth
+  let sliderHeight
 
   const update = debounce(() => {
     $weight = w
   }, 5)
-
-  let thumbWidth
 </script>
 
 <BaseCell title="Weight">
-  <div class="relative grow" bind:clientWidth={thumbWidth}>
+  <div
+    class="bg-triangle cover relative grow bg-contain bg-center bg-no-repeat"
+    bind:clientWidth={sliderWidth}
+    bind:clientHeight={sliderHeight}
+  >
+    <input
+      type="range"
+      bind:value={w}
+      min="250"
+      max="900"
+      on:input={() => update()}
+      class="appearance-slider-vertical peer absolute cursor-ns-resize opacity-0"
+      style="--sliderWidth: {sliderWidth}px; --sliderHeight: {sliderHeight}px"
+      {...{ orient: "vertical" }}
+    />
     <div
-      class="bg-triangle peer mx-auto flex aspect-square h-full w-min -rotate-90 items-center bg-cover bg-no-repeat text-slate-300"
-      style="--thumb-width: {thumbWidth}px"
-    >
-      <input
-        type="range"
-        bind:value={w}
-        min="250"
-        max="900"
-        class="w-full"
-        on:input={() => update()}
-      />
-    </div>
-    <div
-      class="pointer-events-none absolute w-full py-1 text-center text-xs text-slate-900 transition-[font-weight] peer-active:font-semibold"
-      style="bottom: calc({(w - 250) / 650} * (100% - 1.5rem));"
+      class="pointer-events-none absolute w-full rounded-full bg-slate-300 text-center text-sm leading-[1.75rem] text-slate-900 transition peer-hover:bg-slate-200 peer-active:bg-slate-400 peer-active:font-semibold"
+      style="bottom: calc({(w - 250) / 650} * (100% - 1.75rem));"
     >
       {w}
     </div>
@@ -46,30 +47,21 @@
 
 <style>
   .bg-triangle {
-    background-image: url("./triangle.svg");
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iODYiIHZpZXdCb3g9IjAgMCAyNSA4NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI1IDBMMTIuNSA4NkwwIDBMMjUgMFoiIGZpbGw9IiMwRjE3MkEiLz4KPC9zdmc+Cg==);
+  }
+
+  .appearance-slider-vertical {
+    appearance: slider-vertical;
   }
 
   input[type="range"] {
-    appearance: none;
-    width: 100%;
-    background: transparent;
+    height: var(--sliderHeight);
+    width: var(--sliderWidth);
   }
 
   input[type="range"]::-webkit-slider-thumb {
     appearance: none;
-    background: currentColor;
-    height: var(--thumb-width);
-    width: 1.5rem;
-    cursor: ns-resize;
-    border-radius: 100px;
-    box-shadow: none;
-  }
-
-  input[type="range"]::-webkit-slider-runnable-track {
-    margin: calc(var(--thumb-width) / 2 * -1) 0;
-  }
-
-  input[type="range"]:focus {
-    outline: none;
+    width: var(--sliderWidth);
+    height: 1.75rem;
   }
 </style>
