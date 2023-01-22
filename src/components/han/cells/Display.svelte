@@ -11,7 +11,7 @@
 >
   <h4 class="z-10 font-semibold">{placeName}</h4>
   <div
-    class="absolute inset-0 flex items-center justify-center text-7xl transition-[font-weight] duration-[5ms] sm:text-9xl"
+    class="absolute inset-0 flex items-center justify-center text-7xl sm:text-9xl"
     lang={langAttr}
     style="font-variation-settings: 'wght' {$weight}; font-family: {fontName}"
   >

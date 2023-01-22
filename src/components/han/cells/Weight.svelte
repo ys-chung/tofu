@@ -2,22 +2,8 @@
   import BaseCell from "./BaseCell.svelte"
   import { weight } from "../stores"
 
-  function debounce<T extends Function>(cb: T, wait = 20) {
-    let h: NodeJS.Timeout
-    let callable = (...args: any) => {
-      clearTimeout(h)
-      h = setTimeout(() => cb(...args), wait)
-    }
-    return <T>(<any>callable)
-  }
-
-  let w: number = 400
   let sliderWidth
   let sliderHeight
-
-  const update = debounce(() => {
-    $weight = w
-  }, 5)
 </script>
 
 <BaseCell title="Weight">
@@ -28,19 +14,18 @@
   >
     <input
       type="range"
-      bind:value={w}
+      bind:value={$weight}
       min="250"
       max="900"
-      on:input={() => update()}
       class="appearance-slider-vertical peer absolute cursor-ns-resize opacity-0"
       style="--sliderWidth: {sliderWidth}px; --sliderHeight: {sliderHeight}px"
       {...{ orient: "vertical" }}
     />
     <div
       class="pointer-events-none absolute w-full rounded-full bg-slate-300 text-center text-sm leading-[1.75rem] text-slate-900 transition peer-hover:bg-slate-200 peer-active:bg-slate-400 peer-active:font-semibold"
-      style="bottom: calc({(w - 250) / 650} * (100% - 1.75rem));"
+      style="bottom: calc({($weight - 250) / 650} * (100% - 1.75rem));"
     >
-      {w}
+      {$weight}
     </div>
   </div>
 </BaseCell>
