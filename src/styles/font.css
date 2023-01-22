@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Source Han Sans HK";
+  src: url("SourceHanSansHC-VF.otf.woff2");
+}
+
+@font-face {
+  font-family: "Source Han Sans JP";
+  src: url("SourceHanSans-VF.otf.woff2");
+}
+
+@font-face {
+  font-family: "Source Han Sans KR";
+  src: url("SourceHanSansK-VF.otf.woff2");
+}
+
+@font-face {
+  font-family: "Source Han Sans SC";
+  src: url("SourceHanSansSC-VF.otf.woff2");
+}
+
+@font-face {
+  font-family: "Source Han Sans TC";
+  src: url("SourceHanSansTC-VF.otf.woff2");
+}
