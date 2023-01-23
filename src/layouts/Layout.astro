@@ -10,8 +10,6 @@ export interface Props {
   imageAlt: string
 }
 
-const site = "❒ Tofu"
-
 const { description, imageAlt } = Astro.props
 const image = Astro.site?.origin + Astro.props.image
 const title = `❒ ${Astro.props.title} | Tofu`
@@ -38,7 +36,7 @@ import "../private/mori/mori.css"
         optional: {
           description,
           locale: "en_GB",
-          siteName: site
+          siteName: "Tofu"
         },
         image: {
           alt: imageAlt
