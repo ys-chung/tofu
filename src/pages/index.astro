@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import Header from "../components/Header.astro"
-import Compare from "../components/han/Compare.svelte"
+import Han from "../components/han/Han.svelte"
 
 import "../styles/han/font.css"
 ---
@@ -11,5 +11,5 @@ import "../styles/han/font.css"
     title="Han comparison"
     description="Compare CJK characters between different regions"
   />
-  <Compare client:load />
+  <Han client:load />
 </Layout>
