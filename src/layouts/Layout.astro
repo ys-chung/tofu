@@ -1,25 +1,59 @@
 ---
 import Nav from "../components/Nav.astro"
 import Footer from "../components/Footer.astro"
+import { SEO } from "astro-seo"
 
 export interface Props {
   title: string
+  description: string
+  image: string
+  imageAlt: string
 }
 
-const { title } = Astro.props
+const site = "❒ Tofu"
+
+const { title, description, image, imageAlt } = Astro.props
+
+import "../private/mori/mori.css"
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{title} | {site}</title>
+    <SEO
+      title={title + " | ❒ Tofu"}
+      description={description}
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title,
+          type: "website",
+          image
+        },
+        optional: {
+          description,
+          locale: "en_GB",
+          siteName: site
+        },
+        image: {
+          alt: imageAlt
+        }
+      }}
+      twitter={{
+        card: "summary_large_image",
+        creator: "@_yschung",
+        title,
+        description,
+        image
+      }}
+    />
   </head>
   <body>
-    <div class="mx-auto max-w-screen-md px-4 text-slate-900 pb-4">
+    <div class="mx-auto max-w-screen-md px-4 pb-4 text-slate-900">
       <Nav />
       <main>
         <slot />
