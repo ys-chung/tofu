@@ -1,10 +1,16 @@
 <script lang="ts">
   import BaseCell from "./BaseCell.svelte"
 
-  import { char } from "../stores"
+  import { char, displayChar } from "../stores"
 
   function onInput(e: Event) {
     const b = e as InputEvent
+
+    if (b.inputType === "insertFromPaste") {
+      char.set($char.slice(-1))
+      return
+    }
+
     if (b.isComposing === false) {
       char.set(b.data ?? "")
     }
