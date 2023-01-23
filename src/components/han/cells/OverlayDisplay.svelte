@@ -14,7 +14,7 @@
   class="relative col-span-2 row-span-2 aspect-square bg-white p-2 text-sm sm:aspect-auto"
 >
   {#each d as { fontName, langAttr, colour, placeName }}
-    <div class="absolute inset-0 text-[18rem] mix-blend-multiply">
+    <div class="absolute inset-0 select-none text-[18rem] mix-blend-multiply">
       <div
         class="absolute inset-0 flex items-center justify-center text-opacity-0"
         class:text-stroke-red-500={colour === "red"}

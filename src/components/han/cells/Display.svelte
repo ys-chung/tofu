@@ -11,7 +11,7 @@
 >
   <h3 class="z-10 font-semibold">{placeName}</h3>
   <div
-    class="absolute inset-0 flex items-center justify-center text-7xl sm:text-9xl"
+    class="absolute inset-0 flex select-none items-center justify-center text-7xl sm:text-9xl"
     lang={langAttr}
     style="font-variation-settings: 'wght' {$weight}; font-family: {fontName}"
   >

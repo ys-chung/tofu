@@ -23,7 +23,7 @@
       {...{ orient: "vertical" }}
     />
     <div
-      class="pointer-events-none absolute w-full rounded-full bg-slate-300 text-center text-sm leading-[1.75rem] text-slate-900 transition peer-hover:bg-slate-200 peer-active:bg-slate-400 peer-active:font-semibold"
+      class="pointer-events-none absolute w-full rounded-full bg-neutral-300 text-center text-sm leading-[1.75rem] text-neutral-900 transition peer-hover:bg-neutral-200 peer-active:bg-neutral-400 peer-active:font-semibold"
       style="bottom: calc({($weight - 250) / 650} * (100% - 1.75rem));"
     >
       {$weight}

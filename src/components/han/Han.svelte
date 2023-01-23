@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class="grid grid-cols-2 gap-[1px] border border-slate-300 bg-slate-300 sm:grid-cols-3"
+  class="grid grid-cols-2 gap-[1px] border border-stone-300 bg-stone-300 sm:grid-cols-3"
 >
   <div
     class="col-span-2 row-span-2 grid aspect-square grid-cols-2 gap-[1px] sm:col-span-1 sm:row-span-1"
