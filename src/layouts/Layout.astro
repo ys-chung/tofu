@@ -12,8 +12,9 @@ export interface Props {
 
 const site = "❒ Tofu"
 
-const { title, description, imageAlt } = Astro.props
+const { description, imageAlt } = Astro.props
 const image = Astro.site?.origin + Astro.props.image
+const title = `❒ ${Astro.props.title} | Tofu`
 
 import "../private/mori/mori.css"
 ---
@@ -24,9 +25,9 @@ import "../private/mori/mori.css"
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | {site}</title>
+    <title>{title}</title>
     <SEO
-      title={title + " | ❒ Tofu"}
+      title={title}
       description={description}
       charset="UTF-8"
       openGraph={{
