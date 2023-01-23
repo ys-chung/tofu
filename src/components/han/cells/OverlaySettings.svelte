@@ -34,7 +34,7 @@
   <div class="grow bg-white p-2 text-sm">
     <h3 class="mb-1.5 text-sm font-semibold">Display</h3>
     <fieldset class="flex flex-col gap-1 text-sm">
-      {#each ["solid", "outline"] as displayModeName}
+      {#each ["outline", "solid"] as displayModeName}
         <label class="group flex w-min cursor-pointer items-center gap-1">
           <input
             type="radio"
