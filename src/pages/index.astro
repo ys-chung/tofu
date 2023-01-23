@@ -4,9 +4,15 @@ import Header from "../components/Header.astro"
 import Han from "../components/han/Han.svelte"
 
 import "../styles/han/font.css"
+import TwitterImage from "../private/han-twitter.png"
 ---
 
-<Layout title="Tofu">
+<Layout
+  title="Han Comparison"
+  description="Compare CJK characters between different regions in the browser"
+  image={TwitterImage}
+  imageAlt="Han Comparison: Compare CJK characters between different regions in the browser"
+>
   <Header
     title="Han comparison"
     description="Compare CJK characters between different regions"
