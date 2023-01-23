@@ -8,7 +8,7 @@
 
 <div class="col-span-2 flex flex-col gap-[1px] sm:col-span-1">
   <div class="bg-white p-2 text-sm">
-    <h4 class="mb-1.5 text-sm font-semibold">Regions</h4>
+    <h3 class="mb-1.5 text-sm font-semibold">Regions</h3>
     <fieldset class="flex flex-col gap-1">
       {#each d as { placeName, langAttr, colour }}
         <label
@@ -32,7 +32,7 @@
   </div>
 
   <div class="grow bg-white p-2 text-sm">
-    <h4 class="mb-1.5 text-sm font-semibold">Display</h4>
+    <h3 class="mb-1.5 text-sm font-semibold">Display</h3>
     <fieldset class="flex flex-col gap-1 text-sm">
       {#each ["solid", "outline"] as displayModeName}
         <label class="group flex w-min cursor-pointer items-center gap-1">
