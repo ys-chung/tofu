@@ -7,6 +7,6 @@
   class="flex aspect-square flex-col gap-2 bg-white p-2"
   class:justify-between={spaceBetween}
 >
-  <h4 class="text-sm font-semibold">{title}</h4>
+  <h3 class="text-sm font-semibold">{title}</h3>
   <slot />
 </div>

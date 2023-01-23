@@ -23,6 +23,7 @@
       bind:value={$char}
       on:input={(e) => onInput(e)}
       on:compositionend={(e) => onCompositionEnd(e)}
+      aria-label="Character"
     />
   </div>
 </BaseCell>
