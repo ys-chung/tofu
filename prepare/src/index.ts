@@ -15,8 +15,10 @@ const prepJson = z
   })
   .parse(await (await fetch(process.env.PREP_URL ?? "")).json())
 
+console.log("Downloaded prep json")
+
 prepJson.files.forEach(({ location, base64 }) => {
-  fs.mkdirSync(location, { recursive: true })
+  fs.mkdirSync(location.replace(/\/(?:.(?!\/))+$/, ""), { recursive: true })
   fs.writeFileSync(location, Buffer.from(base64, "base64"))
   console.log("Written", location)
 })
