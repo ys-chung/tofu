@@ -12,7 +12,8 @@ export interface Props {
 
 const site = "❒ Tofu"
 
-const { title, description, image, imageAlt } = Astro.props
+const { title, description, imageAlt } = Astro.props
+const image = Astro.site?.origin + Astro.props.image
 
 import "../private/mori/mori.css"
 ---
