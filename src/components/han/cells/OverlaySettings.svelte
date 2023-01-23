@@ -17,7 +17,7 @@
           <input
             type="checkbox"
             value={langAttr}
-            class="h-3 w-3 appearance-none rounded-none border border-slate-400 bg-opacity-0 transition checked:border-none checked:bg-opacity-100 checked:transition-none group-hover:bg-opacity-10 checked:group-hover:bg-opacity-100"
+            class="h-3 w-3 appearance-none rounded-none border border-stone-400 bg-opacity-0 transition checked:border-none checked:bg-opacity-100 checked:transition-none group-hover:bg-opacity-10 checked:group-hover:bg-opacity-100"
             class:bg-red-500={colour === "red"}
             class:bg-yellow-500={colour === "yellow"}
             class:bg-green-500={colour === "green"}
@@ -40,7 +40,7 @@
             type="radio"
             value={displayModeName}
             bind:group={$overlayDisplay}
-            class="h-3 w-3 appearance-none rounded-full border border-slate-400 transition checked:border-none checked:bg-slate-900 checked:transition-none group-hover:bg-slate-100 checked:group-hover:bg-slate-900"
+            class="h-3 w-3 appearance-none rounded-full border border-stone-400 transition checked:border-none checked:bg-stone-900 checked:transition-none group-hover:bg-stone-100 checked:group-hover:bg-stone-900"
           />
           <span class="capitalize">{displayModeName}</span>
         </label>
