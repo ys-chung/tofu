@@ -17,8 +17,9 @@
       bind:value={$weight}
       min="250"
       max="900"
-      class="appearance-slider-vertical peer absolute cursor-ns-resize opacity-0"
+      class="appearance-slider-vertical peer absolute h-[var(--sliderHeight)] w-[var(--sliderWidth)] cursor-ns-resize opacity-0"
       style="--sliderWidth: {sliderWidth}px; --sliderHeight: {sliderHeight}px"
+      aria-label="Weight"
       {...{ orient: "vertical" }}
     />
     <div
@@ -37,11 +38,6 @@
 
   .appearance-slider-vertical {
     appearance: slider-vertical;
-  }
-
-  input[type="range"] {
-    height: var(--sliderHeight);
-    width: var(--sliderWidth);
   }
 
   input[type="range"]::-webkit-slider-thumb {
