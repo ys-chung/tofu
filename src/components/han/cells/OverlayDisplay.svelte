@@ -14,7 +14,11 @@
   class="relative col-span-2 row-span-2 aspect-square bg-white p-2 text-sm sm:aspect-auto"
 >
   {#each d as { fontName, langAttr, colour, placeName }}
-    <div class="absolute inset-0 select-none text-[18rem] mix-blend-multiply">
+    <div
+      class="absolute inset-0 select-none text-[18rem] mix-blend-multiply"
+      lang={langAttr}
+      style="font-variation-settings: 'wght' {$weight}; font-family: {fontName}, AdobeBlank;"
+    >
       <div
         class="absolute inset-0 flex items-center justify-center text-opacity-0"
         class:text-stroke-red-500={colour === "red"}
@@ -31,8 +35,6 @@
           $overlayDisplay === "outline"}
         class:text-opacity-100={$overlayRegions[placeName] &&
           $overlayDisplay === "solid"}
-        lang={langAttr}
-        style="font-variation-settings: 'wght' {$weight}; font-family: {fontName}"
       >
         {$displayChar}
       </div>
@@ -40,7 +42,6 @@
         class="absolute inset-0 flex items-center justify-center text-white text-opacity-0"
         class:text-opacity-100={$overlayRegions[placeName] &&
           $overlayDisplay === "outline"}
-        style="font-variation-settings: 'wght' {$weight}; font-family: {fontName}"
       >
         {$displayChar}
       </div>
