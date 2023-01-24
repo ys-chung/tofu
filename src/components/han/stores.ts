@@ -6,7 +6,7 @@ export const weight = writable(400)
 export const mode = writable<"grid" | "overlay">("grid")
 export const overlayDisplay = writable<"outline" | "solid">("outline")
 export const overlayRegions = writable({
-  "Hong Kong": false,
+  "Hong Kong": true,
   Japan: true,
   Korea: true,
   "Mainland China": false,
