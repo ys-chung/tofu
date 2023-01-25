@@ -9,7 +9,7 @@
 <div
   class="relative flex aspect-square flex-col justify-between bg-white p-2 text-sm"
 >
-  <h3 class="z-10 font-semibold">{placeName}</h3>
+  <h2 class="z-10 font-semibold">{placeName}</h2>
   <div
     class="absolute inset-0 flex select-none items-center justify-center text-7xl sm:text-9xl"
     lang={langAttr}
