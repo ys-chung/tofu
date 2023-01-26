@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "prettier-plugin-astro",
+    "prettier-plugin-svelte",
+    "prettier-plugin-tailwindcss"
+  ],
+  "pluginSearchDirs": false,
+  "useTabs": false,
+  "semi": false,
+  "trailingComma": "none"
+}

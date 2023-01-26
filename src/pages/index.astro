@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Header from "../components/Header.astro"
+import Han from "../components/han/Han.svelte"
+
+import "../styles/han/font.css"
+import TwitterImage from "../private/han-twitter.png"
+---
+
+<Layout
+  title="Han Comparison"
+  description="Compare CJK characters between different regions in your browser"
+  metaDescription="Compare how CJK (Chinese, Japanese, Korean) characters are displayed differently between different regions visually, in your browser."
+  image={TwitterImage}
+  imageAlt="Han Comparison: Compare CJK characters between different regions in your browser"
+>
+  <Header
+    title="Han comparison"
+    description="Compare CJK characters between different regions"
+  />
+  <Han client:load />
+</Layout>

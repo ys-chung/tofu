@@ -1,0 +1,77 @@
+---
+import Nav from "../components/Nav.astro"
+import Footer from "../components/Footer.astro"
+import { SEO } from "astro-seo"
+
+export interface Props {
+  title: string
+  description: string
+  image: string
+  imageAlt: string
+  metaDescription?: string
+}
+
+const {
+  description,
+  imageAlt,
+  metaDescription = Astro.props.description
+} = Astro.props
+const image = Astro.site?.origin + Astro.props.image
+const title = `❒ ${Astro.props.title} | Tofu`
+
+import "../private/mori/mori.css"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={title}
+      description={metaDescription}
+      charset="UTF-8"
+      extend={{
+        meta: [
+          {
+            name: "title",
+            content: title
+          }
+        ]
+      }}
+      openGraph={{
+        basic: {
+          title,
+          type: "website",
+          image
+        },
+        optional: {
+          description,
+          locale: "en_GB",
+          siteName: "Tofu"
+        },
+        image: {
+          alt: imageAlt
+        }
+      }}
+      twitter={{
+        card: "summary_large_image",
+        creator: "@_yschung",
+        title,
+        description,
+        image
+      }}
+    />
+  </head>
+  <body class="bg-stone-50 selection:bg-stone-300 selection:bg-opacity-60">
+    <div class="mx-auto max-w-screen-md px-4 pb-4 text-neutral-900">
+      <Nav />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    {import.meta.env.PROD && <script defer src="/_vercel/insights/script.js" />}
+  </body>
+</html>
