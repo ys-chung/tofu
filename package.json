@@ -28,7 +28,7 @@
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.8.0",
     "prettier-plugin-svelte": "^2.9.0",
-    "prettier-plugin-tailwindcss": "^0.2.2",
+    "prettier-plugin-tailwindcss": "^0.2.3",
     "tailwindcss-text-fill-stroke": "^1.1.2",
     "typescript": "^4.9.5"
   }
