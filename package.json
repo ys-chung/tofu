@@ -16,7 +16,7 @@
     "@astrojs/tailwind": "^3.1.1",
     "@astrojs/vercel": "^3.2.1",
     "@vercel/analytics": "^0.1.11",
-    "astro": "^2.1.4",
+    "astro": "^2.1.9",
     "astro-seo": "^0.7.1",
     "dotenv": "^16.0.3",
     "svelte": "^3.57.0",
