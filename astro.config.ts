@@ -11,6 +11,21 @@ import vercel from "@astrojs/vercel/static"
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte(), tailwind()],
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name?.match(".woff2")) {
+              return `_astro/[name].[hash]`
+            }
+
+            return `_astro/[name].[hash][extname]`
+          }
+        }
+      }
+    }
+  },
   output: "static",
   adapter: vercel(),
   site:
