@@ -17,7 +17,7 @@ export default defineConfig({
         output: {
           assetFileNames: (assetInfo) => {
             if (assetInfo.name?.match(".woff2")) {
-              return `_astro/[name].[hash]`
+              return `_astro/[hash]`
             }
 
             return `_astro/[name].[hash][extname]`
