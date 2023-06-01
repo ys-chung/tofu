@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/svelte": "^2.1.0",
     "@astrojs/tailwind": "^3.1.1",
-    "@astrojs/vercel": "^3.2.3",
+    "@astrojs/vercel": "^3.4.1",
     "@vercel/analytics": "^0.1.11",
     "astro": "^2.2.1",
     "astro-seo": "^0.7.2",
