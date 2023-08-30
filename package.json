@@ -12,24 +12,24 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^2.1.0",
-    "@astrojs/tailwind": "^3.1.1",
-    "@astrojs/vercel": "^3.2.3",
-    "@vercel/analytics": "^0.1.11",
-    "astro": "^2.2.1",
-    "astro-seo": "^0.7.2",
-    "dotenv": "^16.0.3",
-    "svelte": "^3.58.0",
-    "tailwindcss": "^3.3.1",
-    "zod": "^3.21.4"
+    "@astrojs/svelte": "^4.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/vercel": "^4.0.0",
+    "@vercel/analytics": "^1.0.2",
+    "astro": "^3.0.1",
+    "astro-seo": "^0.8.0",
+    "dotenv": "^16.3.1",
+    "svelte": "^4.2.0",
+    "tailwindcss": "^3.3.3",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11",
-    "prettier": "^2.8.7",
-    "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-svelte": "^2.10.0",
-    "prettier-plugin-tailwindcss": "^0.2.7",
+    "@types/node": "^20.5.7",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-svelte": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.3",
     "tailwindcss-text-fill-stroke": "^1.1.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.2.2"
   }
 }
