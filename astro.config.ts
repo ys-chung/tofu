@@ -27,9 +27,7 @@ export default defineConfig({
     }
   },
   output: "static",
-  adapter: vercel({
-    analytics: true
-  }),
+  adapter: vercel(),
   site:
     process.env.SITE ??
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
