@@ -20,9 +20,12 @@ const image = Astro.site?.origin + Astro.props.image
 const title = `❒ ${Astro.props.title} | Tofu`
 
 import "../private/mori/mori.css"
+
+const umamiUrl = import.meta.env.UMAMI_URL
+const umamiId = import.meta.env.UMAMI_ID
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width" />
@@ -72,5 +75,10 @@ import "../private/mori/mori.css"
       </main>
       <Footer />
     </div>
+    {
+      import.meta.env.PROD && (
+        <script async src={umamiUrl} data-website-id={umamiId} />
+      )
+    }
   </body>
 </html>
