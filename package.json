@@ -12,21 +12,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^4.0.0",
-    "@astrojs/vercel": "^4.0.0",
+    "@astrojs/svelte": "^4.0.3",
+    "@astrojs/vercel": "^5.1.0",
     "@unocss/preset-uno": "^0.57.1",
     "@unocss/reset": "^0.57.1",
-    "astro": "^3.0.1",
+    "astro": "^3.4.0",
     "astro-seo": "^0.8.0",
     "dotenv": "^16.3.1",
-    "svelte": "^4.2.0",
+    "svelte": "^4.2.2",
     "unocss": "^0.57.1",
-    "zod": "^3.22.2"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/node": "^20.5.7",
+    "@types/node": "^20.8.9",
     "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-astro": "^0.12.1",
     "prettier-plugin-svelte": "^3.0.3",
     "typescript": "^5.2.2"
   }
