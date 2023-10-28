@@ -5,12 +5,18 @@ import { defineConfig } from "astro/config"
 
 // https://astro.build/config
 import svelte from "@astrojs/svelte"
-import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/static"
+
+import unocss from "unocss/astro"
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), tailwind()],
+  integrations: [
+    svelte(),
+    unocss({
+      injectReset: true
+    })
+  ],
   vite: {
     build: {
       rollupOptions: {
@@ -27,9 +33,7 @@ export default defineConfig({
     }
   },
   output: "static",
-  adapter: vercel({
-    analytics: true
-  }),
+  adapter: vercel(),
   site:
     process.env.SITE ??
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
