@@ -8,6 +8,7 @@ import svelte from "@astrojs/svelte"
 import vercel from "@astrojs/vercel/static"
 
 import unocss from "unocss/astro"
+import rehypeExternalLinks from "rehype-external-links"
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,15 @@ export default defineConfig({
       injectReset: true
     })
   ],
+  markdown: {
+    rehypePlugins: [
+      () =>
+        rehypeExternalLinks({
+          target: "_blank",
+          rel: ["noopener", "nofollow", "noreferrer"]
+        })
+    ]
+  },
   vite: {
     build: {
       rollupOptions: {
