@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro"
 import Header from "../components/Header.astro"
 import Han from "../components/han/Han.svelte"
 
-import * as hanMd from "../content/han/han.md"
+import HanContent from "../content/han/han.md"
 
 import "../styles/han/font.css"
 import TwitterImage from "../private/han-twitter.png"
@@ -21,7 +21,7 @@ import TwitterImage from "../private/han-twitter.png"
     description="Compare CJK character between regions"
   />
   <Han client:load />
-    <hanMd.Content />
   <div class="prose prose-neutral my-24 max-w-full">
+    <HanContent />
   </div>
 </Layout>
