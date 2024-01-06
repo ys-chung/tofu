@@ -3,7 +3,8 @@ export const data = [
     fontName: "Source Han Sans HK",
     placeName: "Hong Kong",
     langAttr: "yue-hk",
-    colour: "yellow"
+    colour: "yellow",
+    specialName: undefined
   },
   {
     fontName: "Source Han Sans JP",
@@ -30,6 +31,7 @@ export const data = [
     fontName: "Source Han Sans TC",
     placeName: "Taiwan",
     langAttr: "cmn-tw",
-    colour: "fuchsia"
+    colour: "fuchsia",
+    specialName: undefined
   }
-]
+] as const
