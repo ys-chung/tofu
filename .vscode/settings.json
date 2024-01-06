@@ -1,6 +1,7 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "svelte.plugin.css.diagnostics.enable": false,
+  "prettier.documentSelectors": ["**/*.astro", "**/*.svelte"],
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

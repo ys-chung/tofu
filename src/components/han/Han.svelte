@@ -24,8 +24,8 @@
   </div>
 
   {#if $mode === "grid"}
-    {#each data as { fontName, placeName, langAttr }}
-      <Display {fontName} {placeName} {langAttr} />
+    {#each data as { fontName, placeName, langAttr, specialName }}
+      <Display {fontName} {placeName} {langAttr} {specialName} />
     {/each}
     <div class="bg-white sm:hidden" />
   {:else}
