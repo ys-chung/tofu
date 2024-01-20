@@ -1,5 +1,5 @@
 import { type Component, createSignal } from "solid-js"
-import { altData } from "./altdata"
+import { data } from "./altdata"
 
 const Alternatives: Component<{}> = (props) => {
   const [text, setText] = createSignal("禮物")
@@ -26,16 +26,15 @@ const Alternatives: Component<{}> = (props) => {
 
   function genDisplayText(displayText: string) {
     return Array.from(displayText).map((char, index) => {
-      const lhs = altData.find((e) => char === e[0])
-      const rhs = altData.find((e) => char === e[1])
+      const d = data.get(char)
 
-      console.log(char, lhs, rhs)
+      console.log(char, d)
 
-      if (!(lhs || rhs)) {
+      if (!d) {
         return <span>{char}</span>
       }
 
-      const replacementChar = lhs ? lhs[1] : rhs ? rhs[0] : ""
+      const replacementChar = d[0]
 
       return (
         <span
