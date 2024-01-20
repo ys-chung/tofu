@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/solid-js": "^4.0.1",
     "@astrojs/svelte": "^5.0.3",
     "@astrojs/vercel": "^7.0.0",
     "@unocss/preset-uno": "^0.58.3",
@@ -20,6 +21,7 @@
     "astro-seo": "^0.8.0",
     "dotenv": "^16.3.2",
     "rehype-external-links": "^3.0.0",
+    "solid-js": "^1.8.11",
     "svelte": "^4.2.9",
     "unocss": "^0.58.3",
     "zod": "^3.22.4"

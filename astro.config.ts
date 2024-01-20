@@ -1,12 +1,10 @@
 import * as dotenv from "dotenv"
 dotenv.config()
-
 import { defineConfig } from "astro/config"
 
-// https://astro.build/config
 import svelte from "@astrojs/svelte"
+import solidJs from "@astrojs/solid-js"
 import vercel from "@astrojs/vercel/static"
-
 import unocss from "unocss/astro"
 import rehypeExternalLinks from "rehype-external-links"
 
@@ -14,6 +12,7 @@ import rehypeExternalLinks from "rehype-external-links"
 export default defineConfig({
   integrations: [
     svelte(),
+    solidJs(),
     unocss({
       injectReset: true
     })
@@ -35,7 +34,6 @@ export default defineConfig({
             if (assetInfo.name?.match(".woff2")) {
               return `_astro/[hash]`
             }
-
             return `_astro/[name].[hash][extname]`
           }
         }
