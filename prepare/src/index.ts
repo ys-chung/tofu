@@ -5,5 +5,5 @@ dotenv.config()
 import { privateFiles } from "./privatefiles.js"
 import { unicode } from "./unicode.js"
 
-// await privateFiles()
+await privateFiles()
 await unicode()
