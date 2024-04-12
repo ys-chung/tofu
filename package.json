@@ -20,7 +20,7 @@
     "astro-seo": "^0.8.3",
     "dotenv": "^16.4.5",
     "rehype-external-links": "^3.0.0",
-    "svelte": "^4.2.8",
+    "svelte": "^4.2.13",
     "unocss": "^0.59.2",
     "zod": "^3.22.4"
   },
