@@ -29,9 +29,15 @@ export const ControlCell = (props: {
     setChar(e.data ?? "")
   }
 
-  const onModeChange = (o: Mode, e: Event) => {
-    if ((e.target as HTMLInputElement).checked) {
-      setMode(o)
+  const onModeChange = (
+    m: Mode,
+    e: Event & {
+      currentTarget: HTMLInputElement
+      target: HTMLInputElement
+    }
+  ) => {
+    if (e.target.checked) {
+      setMode(m)
     }
   }
 
@@ -93,10 +99,12 @@ export const ControlCell = (props: {
         <h2 class="text-sm font-semibold">Mode</h2>
         <fieldset class="flex flex-col gap-1 text-sm">
           <For
-            each={[
-              ["Grid", Mode.Grid],
-              ["Overlay", Mode.Overlay]
-            ]}
+            each={
+              [
+                ["Grid", Mode.Grid],
+                ["Overlay", Mode.Overlay]
+              ] as const
+            }
           >
             {(itemMode) => (
               <label class="group flex w-min cursor-pointer items-center gap-1">
