@@ -1,6 +1,6 @@
 import { type Accessor, type Setter, For } from "solid-js"
 
-import { Mode } from "../mode"
+import { Mode } from "../util"
 
 import { Button } from "../Button"
 
