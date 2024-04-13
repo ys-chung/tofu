@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js"
+import { createSignal, Switch, Match, For } from "solid-js"
 
 import { Mode, OverlayDisplayMode } from "./mode"
 import { langData } from "../../private/data"
@@ -6,6 +6,7 @@ import { langData } from "../../private/data"
 import { PlaceholderCell } from "./cells/PlaceholderCell"
 
 import { ControlCell } from "./cells/ControlCell"
+import { GridDisplayCell } from "./cells/GridDisplayCell"
 
 export const Han = () => {
   const [char, setChar] = createSignal("返")
@@ -29,13 +30,29 @@ export const Han = () => {
         setWeight={setWeight}
         mode={mode}
         setMode={setMode}
-      ></ControlCell>
+      />
 
-      <PlaceholderCell title="1" />
-      <PlaceholderCell title="2" />
-      <PlaceholderCell title="3" />
-      <PlaceholderCell title="4" />
-      <PlaceholderCell title="5" />
+      <Switch>
+        <Match when={mode() === Mode.Grid}>
+          <For each={newLangData}>
+            {(lang) => (
+              <GridDisplayCell
+                displayChar={displayChar}
+                weight={weight}
+                fontName={lang.fontName}
+                placeName={
+                  props.useAltName ? lang.altPlaceName : lang.placeName
+                }
+                langAttr={lang.langAttr}
+                writingSystemName={lang.writingSystemName}
+              />
+            )}
+          </For>
+        </Match>
+        <Match when={mode() === Mode.Overlay}>
+          <></>
+        </Match>
+      </Switch>
     </div>
   )
 }
