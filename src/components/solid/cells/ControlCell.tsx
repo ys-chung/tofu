@@ -1,4 +1,10 @@
-import { type Accessor, type Setter, For } from "solid-js"
+import {
+  type Accessor,
+  type Setter,
+  For,
+  onMount,
+  createSignal
+} from "solid-js"
 
 import { Mode } from "../util"
 
@@ -45,6 +51,18 @@ export const ControlCell = (props: {
     }
   }
 
+  const [sliderWidth, setSliderWidth] = createSignal<number>(100)
+
+  let sliderContainer: HTMLDivElement | undefined
+
+  onMount(() => {
+    setSliderWidth(sliderContainer!.clientWidth)
+
+    window.addEventListener("resize", () => {
+      setSliderWidth(sliderContainer!.clientWidth)
+    })
+  })
+
   return (
     <div class="col-span-2 row-span-2 grid aspect-square grid-cols-2 gap-[1px] sm:col-span-1 sm:row-span-1">
       {/* Input */}
@@ -77,15 +95,19 @@ export const ControlCell = (props: {
       {/* Weight */}
       <div class="flex aspect-square flex-col gap-2 bg-white p-2">
         <h2 class="text-sm font-semibold">Weight</h2>
-        <div class="bg-triangle cover relative grow bg-contain bg-center bg-no-repeat relative">
+        <div
+          class="bg-triangle cover relative grow bg-contain bg-center bg-no-repeat relative"
+          ref={sliderContainer}
+          style={`--slider-width: ${sliderWidth()}px`}
+        >
           <input
             type="range"
             value={weight()}
             min="250"
             max="900"
-            class="appearance-slider-vertical peer absolute cursor-ns-resize opacity-0 inset-0 w-full h-full"
+            class="peer absolute cursor-ns-resize inset-0 w-full h-full write-vertical-right opacity-0 [&::-webkit-slider-thumb]-w-[var(--slider-width)] [&::-webkit-slider-thumb]-h-7"
+            style="direction: rtl"
             aria-label="Weight"
-            {...{ orient: "vertical" }}
             oninput={(e) => setWeight(parseInt(e.target.value))}
           />
 
