@@ -2,7 +2,6 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import { defineConfig } from "astro/config";
 
-import svelte from "@astrojs/svelte";
 import vercel from "@astrojs/vercel/static";
 import unocss from "unocss/astro";
 import rehypeExternalLinks from "rehype-external-links";
@@ -12,7 +11,7 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), unocss({
+  integrations: [unocss({
     injectReset: true
   }), solidJs()],
   markdown: {
