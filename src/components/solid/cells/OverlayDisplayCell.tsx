@@ -1,4 +1,4 @@
-import { type Accessor, type Setter, For } from "solid-js"
+import { type Accessor, For } from "solid-js"
 import { OverlayDisplayMode, type newLangDataType } from "../util"
 
 export const OverlayDisplayCell = (props: {
