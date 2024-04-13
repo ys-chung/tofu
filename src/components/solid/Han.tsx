@@ -1,12 +1,11 @@
 import { createSignal, Switch, Match, For } from "solid-js"
 
-import { Mode, OverlayDisplayMode } from "./mode"
+import { Mode, OverlayDisplayMode } from "./util"
 import { langData } from "../../private/data"
-
-import { PlaceholderCell } from "./cells/PlaceholderCell"
 
 import { ControlCell } from "./cells/ControlCell"
 import { GridDisplayCell } from "./cells/GridDisplayCell"
+import { OverlayDisplayCell } from "./cells/OverlayDisplayCell"
 
 export const Han = (props: { useAltName: boolean }) => {
   const [char, setChar] = createSignal("返")
@@ -50,7 +49,12 @@ export const Han = (props: { useAltName: boolean }) => {
           </For>
         </Match>
         <Match when={mode() === Mode.Overlay}>
-          <></>
+          <OverlayDisplayCell
+            newLangData={newLangData}
+            weight={weight}
+            displayChar={displayChar}
+            overlayMode={overlayMode}
+          />
         </Match>
       </Switch>
     </div>
