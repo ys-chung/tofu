@@ -8,7 +8,7 @@ import { PlaceholderCell } from "./cells/PlaceholderCell"
 import { ControlCell } from "./cells/ControlCell"
 import { GridDisplayCell } from "./cells/GridDisplayCell"
 
-export const Han = () => {
+export const Han = (props: { useAltName: boolean }) => {
   const [char, setChar] = createSignal("返")
   const displayChar = () => char().substring(0, 1)
   const [weight, setWeight] = createSignal<number>(400)
