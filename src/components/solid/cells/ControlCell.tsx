@@ -16,7 +16,11 @@ export const ControlCell = (props: {
 
   const onInput = (e: InputEvent) => {
     if (e.inputType === "insertFromPaste") {
-      setChar(char().slice(-1))
+      const target = e.target as HTMLInputElement
+      const newChar = target.value.slice(-1)
+
+      setChar(newChar)
+      target.value = newChar
       return
     }
 
@@ -49,6 +53,7 @@ export const ControlCell = (props: {
         <div>
           <input
             type="text"
+            name="character"
             class="block w-full text-7xl outline-none sm:text-5xl"
             oninput={onInput}
             oncompositionend={onCompositionEnd}
