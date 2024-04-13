@@ -48,6 +48,7 @@ export const Han = (props: { useAltName: boolean }) => {
               />
             )}
           </For>
+          <div class="bg-white sm:hidden" />
         </Match>
         <Match when={mode() === Mode.Overlay}>
           <OverlayDisplayCell
