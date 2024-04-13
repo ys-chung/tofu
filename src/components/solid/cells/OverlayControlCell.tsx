@@ -8,6 +8,19 @@ export const OverlayControlCell = (props: {
   useAltName: boolean
 }) => {
   const { newLangData, overlayMode, setOverlayMode, useAltName } = props
+
+  const onOverlayModeChange = (
+    m: OverlayDisplayMode,
+    e: Event & {
+      currentTarget: HTMLInputElement
+      target: HTMLInputElement
+    }
+  ) => {
+    if (e.target.checked) {
+      setOverlayMode(m)
+    }
+  }
+
   return (
     <div class="col-span-2 flex flex-col gap-[1px] sm:col-span-1">
       <div class="bg-white p-2 text-sm">
@@ -67,11 +80,7 @@ export const OverlayControlCell = (props: {
                   type="radio"
                   name="overlayMode"
                   checked={overlayMode() === itemMode[1]}
-                  onchange={(e) => {
-                    if (e.target.checked) {
-                      setOverlayMode(itemMode[1])
-                    }
-                  }}
+                  onchange={[onOverlayModeChange, itemMode[1]]}
                   class="h-3 w-3 appearance-none rounded-full border border-stone-400 transition checked:border-none checked:bg-stone-900 checked:transition-none group-hover:bg-stone-100 checked:group-hover:bg-stone-900"
                 />
                 <span>{itemMode[0]}</span>
