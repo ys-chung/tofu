@@ -1,6 +1,9 @@
-import { mergeProps, createSignal } from "solid-js"
+import { mergeProps } from "solid-js"
 
-export const PlaceholderCell = (props: { title: string; spaceBetween?: boolean }) => {
+export const PlaceholderCell = (props: {
+  title: string
+  spaceBetween?: boolean
+}) => {
   const { title, spaceBetween } = mergeProps(
     {
       spaceBetween: false
