@@ -6,6 +6,7 @@ import { langData } from "../../private/data"
 import { ControlCell } from "./cells/ControlCell"
 import { GridDisplayCell } from "./cells/GridDisplayCell"
 import { OverlayDisplayCell } from "./cells/OverlayDisplayCell"
+import { OverlayControlCell } from "./cells/OverlayControlCell"
 
 export const Han = (props: { useAltName: boolean }) => {
   const [char, setChar] = createSignal("返")
@@ -54,6 +55,12 @@ export const Han = (props: { useAltName: boolean }) => {
             weight={weight}
             displayChar={displayChar}
             overlayMode={overlayMode}
+          />
+          <OverlayControlCell
+            newLangData={newLangData}
+            overlayMode={overlayMode}
+            setOverlayMode={setOverlayMode}
+            useAltName={props.useAltName}
           />
         </Match>
       </Switch>
