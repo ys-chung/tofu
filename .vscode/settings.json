@@ -1,8 +1,11 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "svelte.plugin.css.diagnostics.enable": false,
-  "prettier.documentSelectors": ["**/*.astro", "**/*.svelte"],
+  "editor.tabSize": 2,
+  "prettier.documentSelectors": ["**/*.astro"],
   "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
