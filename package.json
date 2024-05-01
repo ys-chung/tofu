@@ -21,7 +21,7 @@
     "dotenv": "^16.4.5",
     "rehype-external-links": "^3.0.0",
     "solid-js": "^1.8.16",
-    "unocss": "^0.59.2",
+    "unocss": "^0.59.4",
     "zod": "^3.22.4"
   },
   "devDependencies": {
