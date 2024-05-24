@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "prep": "tsc --project prepare/tsconfig.json && node prepare/dist/index.js",
+    "gen": "tsc --project prepare/tsconfig.json && node prepare/dist/generate.js",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
