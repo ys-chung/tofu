@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import { defineConfig } from "astro/config";
 
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel/serverless";
 import unocss from "unocss/astro";
 import rehypeExternalLinks from "rehype-external-links";
 
@@ -34,7 +34,7 @@ export default defineConfig({
       }
     }
   },
-  output: "static",
+  output: "server",
   adapter: vercel(),
   site: process.env.SITE ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
 });
