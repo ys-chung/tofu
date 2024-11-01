@@ -17,7 +17,7 @@
     "@astrojs/vercel": "^8.0.0-beta.2",
     "@unocss/preset-uno": "^0.62.4",
     "@unocss/reset": "^0.62.4",
-    "astro": "^5.0.0-beta.1",
+    "astro": "^5.0.0-beta.6",
     "astro-seo": "^0.8.4",
     "dotenv": "^16.4.5",
     "rehype-external-links": "^3.0.0",
