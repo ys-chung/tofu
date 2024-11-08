@@ -22,7 +22,7 @@
     "dotenv": "^16.4.5",
     "rehype-external-links": "^3.0.0",
     "solid-js": "^1.8.23",
-    "unocss": "^0.62.4",
+    "unocss": "^0.64.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
