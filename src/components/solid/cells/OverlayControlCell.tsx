@@ -5,9 +5,8 @@ export const OverlayControlCell = (props: {
   newLangData: newLangDataType
   overlayMode: Accessor<OverlayDisplayMode>
   setOverlayMode: Setter<OverlayDisplayMode>
-  useAltName: boolean
 }) => {
-  const { newLangData, overlayMode, setOverlayMode, useAltName } = props
+  const { newLangData, overlayMode, setOverlayMode } = props
 
   const onOverlayModeChange = (
     m: OverlayDisplayMode,
@@ -56,7 +55,7 @@ export const OverlayControlCell = (props: {
                     }
                   }}
                 />
-                {useAltName ? altPlaceName : placeName}
+                {placeName}
               </label>
             )}
           </For>

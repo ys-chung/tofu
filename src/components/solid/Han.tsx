@@ -1,14 +1,14 @@
 import { createSignal, Switch, Match, For } from "solid-js"
 
 import { Mode, OverlayDisplayMode } from "./util"
-import { langData } from "../../private/data"
+import { type LangData } from "../../private/data"
 
 import { ControlCell } from "./cells/ControlCell"
 import { GridDisplayCell } from "./cells/GridDisplayCell"
 import { OverlayDisplayCell } from "./cells/OverlayDisplayCell"
 import { OverlayControlCell } from "./cells/OverlayControlCell"
 
-export const Han = (props: { useAltName: boolean }) => {
+export const Han = (props: { langData: LangData }) => {
   const [char, setChar] = createSignal("返")
   const displayChar = () => char().substring(0, 1)
   const [weight, setWeight] = createSignal<number>(400)
@@ -16,7 +16,7 @@ export const Han = (props: { useAltName: boolean }) => {
   const [overlayMode, setOverlayMode] = createSignal<OverlayDisplayMode>(
     OverlayDisplayMode.Outline
   )
-  const newLangData = langData.map((lang) => {
+  const newLangData = props.langData.map((lang) => {
     const [showOverlay, setShowOverlay] = createSignal(lang.initialShowOverlay)
     return { ...lang, showOverlay, setShowOverlay }
   })
@@ -40,9 +40,7 @@ export const Han = (props: { useAltName: boolean }) => {
                 displayChar={displayChar}
                 weight={weight}
                 fontName={lang.fontName}
-                placeName={
-                  props.useAltName ? lang.altPlaceName : lang.placeName
-                }
+                placeName={lang.placeName}
                 langAttr={lang.langAttr}
                 writingSystemName={lang.writingSystemName}
               />
@@ -61,7 +59,6 @@ export const Han = (props: { useAltName: boolean }) => {
             newLangData={newLangData}
             overlayMode={overlayMode}
             setOverlayMode={setOverlayMode}
-            useAltName={props.useAltName}
           />
         </Match>
       </Switch>

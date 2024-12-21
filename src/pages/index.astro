@@ -1,7 +1,7 @@
 ---
-import { useAltName } from "../private/util"
+import { langData } from "../private/data"
 
-const enableAltName = useAltName(Astro.request)
+const data = langData(Astro.request)
 
 import Layout from "../layouts/Layout.astro"
 import Header from "../components/Header.astro"
@@ -24,7 +24,7 @@ import TwitterImage from "../private/han-twitter.png"
     title="Han character comparison tool"
     description="Compare CJK character between regions"
   />
-  <Han useAltName={enableAltName} client:load />
+  <Han langData={data} client:load />
   <div class="prose prose-neutral my-24 max-w-full">
     <HanContent />
   </div>
