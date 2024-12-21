@@ -15,19 +15,19 @@
   "dependencies": {
     "@astrojs/solid-js": "^5.0.1",
     "@astrojs/vercel": "^8.0.1",
-    "@unocss/preset-uno": "^0.65.0",
-    "@unocss/reset": "^0.65.0",
+    "@unocss/preset-uno": "^0.65.2",
+    "@unocss/reset": "^0.65.2",
     "astro": "^5.1.1",
     "astro-seo": "^0.8.4",
     "dotenv": "^16.4.7",
     "rehype-external-links": "^3.0.0",
     "solid-js": "^1.9.3",
-    "unocss": "^0.65.0",
-    "zod": "^3.23.8"
+    "unocss": "^0.65.2",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "prettier": "^3.4.1",
+    "@types/node": "^22.10.2",
+    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.7.2"
   }
