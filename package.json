@@ -13,11 +13,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^5.0.0",
-    "@astrojs/vercel": "^8.0.0",
+    "@astrojs/solid-js": "^5.0.1",
+    "@astrojs/vercel": "^8.0.1",
     "@unocss/preset-uno": "^0.65.0",
     "@unocss/reset": "^0.65.0",
-    "astro": "^5.0.2",
+    "astro": "^5.1.1",
     "astro-seo": "^0.8.4",
     "dotenv": "^16.4.7",
     "rehype-external-links": "^3.0.0",
