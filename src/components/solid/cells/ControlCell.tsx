@@ -67,12 +67,12 @@ export const ControlCell = (props: {
     <div class="col-span-2 row-span-2 grid aspect-square grid-cols-2 gap-[1px] sm:col-span-1 sm:row-span-1">
       {/* Input */}
       <div class="flex aspect-square flex-col gap-2 bg-white p-2 justify-between">
-        <h2 class="text-sm font-semibold">Character</h2>
+        <h2 class="text-sm font-semibold">Type here</h2>
         <div>
           <input
             type="text"
             name="character"
-            class="block w-full text-7xl outline-none sm:text-5xl"
+            class="block w-full text-7xl outline-none sm:text-5xl caret-neutral-500"
             oninput={onInput}
             oncompositionend={onCompositionEnd}
             aria-label="Character"
