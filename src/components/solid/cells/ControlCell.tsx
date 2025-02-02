@@ -72,7 +72,7 @@ export const ControlCell = (props: {
           <input
             type="text"
             name="character"
-            class="block w-full text-7xl outline-none sm:text-5xl"
+            class="block w-full text-7xl outline-none sm:text-5xl caret-neutral-500"
             oninput={onInput}
             oncompositionend={onCompositionEnd}
             aria-label="Character"
