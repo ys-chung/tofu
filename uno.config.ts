@@ -1,15 +1,12 @@
-import { defineConfig, presetUno, presetTypography } from "unocss"
-import { fontFamily, colors } from "@unocss/preset-uno/theme"
+import { defineConfig, presetWind3, presetTypography } from "unocss"
+import { font, colors } from "@unocss/preset-wind4/theme"
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetWind3(),
     presetTypography({
       cssExtend: {
-        h2: {
-          "font-size": "1em",
-          color: colors.stone[800]
-        },
+        h2: { "font-size": "1em", color: colors.stone[800] },
         a: {
           "text-decoration-color": colors.stone[300],
           color: colors.stone[600],
@@ -17,15 +14,9 @@ export default defineConfig({
             "text-decoration-color cubic-bezier(0.4, 0, 0.2, 1) 150ms",
           "text-decoration-offset": "2px"
         },
-        "a:hover": {
-          "text-decoration-color": colors.current
-        }
+        "a:hover": { "text-decoration-color": "currentColor" }
       }
     })
   ],
-  theme: {
-    fontFamily: {
-      sans: "PP Mori," + fontFamily.sans
-    }
-  }
+  theme: { fontFamily: { sans: "PP Mori," + font.sans } }
 })
