@@ -13,20 +13,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^5.0.10",
+    "@astrojs/solid-js": "^5.1.0",
     "@astrojs/vercel": "^8.1.4",
-    "@unocss/preset-uno": "^66.1.0",
-    "@unocss/reset": "^66.1.0",
-    "astro": "^5.7.10",
+    "@unocss/preset-uno": "^66.1.2",
+    "@unocss/reset": "^66.1.2",
+    "astro": "^5.8.0",
     "astro-seo": "^0.8.4",
     "dotenv": "^16.5.0",
     "rehype-external-links": "^3.0.0",
-    "solid-js": "^1.9.6",
-    "unocss": "^66.1.0",
-    "zod": "^3.24.4"
+    "solid-js": "^1.9.7",
+    "unocss": "^66.1.2",
+    "zod": "^3.25.23"
   },
   "devDependencies": {
-    "@types/node": "^22.15.3",
+    "@types/node": "^22.15.21",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.8.3"
