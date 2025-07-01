@@ -16,7 +16,7 @@
     "@astrojs/solid-js": "^5.1.0",
     "@astrojs/vercel": "^8.1.5",
     "@unocss/preset-uno": "^66.2.0",
-    "@unocss/reset": "^66.2.0",
+    "@unocss/reset": "^66.3.2",
     "astro": "^5.9.3",
     "astro-seo": "^0.8.4",
     "dotenv": "^16.5.0",
