@@ -15,7 +15,7 @@
   "dependencies": {
     "@astrojs/solid-js": "^5.1.0",
     "@astrojs/vercel": "^8.1.5",
-    "@unocss/preset-uno": "^66.2.0",
+    "@unocss/preset-uno": "^66.5.0",
     "@unocss/reset": "^66.2.0",
     "astro": "^5.9.3",
     "astro-seo": "^0.8.4",
