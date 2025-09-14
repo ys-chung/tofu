@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prep": "tsc --project prepare/tsconfig.json && node prepare/dist/index.js",
-    "gen": "tsc --project prepare/tsconfig.json && node prepare/dist/generate.js",
+    "prep": "tsc --project prepare/tsconfig.json && node --env-file=.env prepare/dist/index.js",
+    "gen": "tsc --project prepare/tsconfig.json && node --env-file=.env prepare/dist/generate.js",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
