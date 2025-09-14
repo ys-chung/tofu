@@ -1,6 +1,7 @@
 ---
 import Nav from "../components/Nav.astro"
 import Footer from "../components/Footer.astro"
+import Analytics from "../private/Analytics.astro"
 import { SEO } from "astro-seo"
 
 export interface Props {
@@ -20,9 +21,6 @@ const image = Astro.site?.origin + Astro.props.image
 const title = `❒ Tofu | ${Astro.props.title}`
 
 import "../private/mori/mori.css"
-
-const umamiUrl = import.meta.env.UMAMI_URL
-const umamiId = import.meta.env.UMAMI_ID
 ---
 
 <!doctype html>
@@ -67,6 +65,8 @@ const umamiId = import.meta.env.UMAMI_ID
         image
       }}
     />
+
+    {import.meta.env.PROD && <Analytics />}
   </head>
   <body
     class="bg-stone-50 selection:bg-stone-300 selection:bg-opacity-60 font-sans"
@@ -78,10 +78,5 @@ const umamiId = import.meta.env.UMAMI_ID
       </main>
       <Footer />
     </div>
-    {
-      import.meta.env.PROD && (
-        <script async src={umamiUrl} data-website-id={umamiId} />
-      )
-    }
   </body>
 </html>
