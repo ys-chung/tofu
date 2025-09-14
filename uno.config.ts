@@ -12,7 +12,8 @@ export default defineConfig({
           color: colors.stone[600],
           transition:
             "text-decoration-color cubic-bezier(0.4, 0, 0.2, 1) 150ms",
-          "text-decoration-offset": "2px"
+          "text-underline-offset": "2px",
+          "text-decoration-thickness": "2px"
         },
         "a:hover": { "text-decoration-color": "currentColor" }
       }

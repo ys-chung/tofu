@@ -1,8 +1,5 @@
 import fs from "node:fs"
-import * as dotenv from "dotenv"
 import { z } from "zod"
-
-dotenv.config()
 
 const prepJson = z
   .object({
