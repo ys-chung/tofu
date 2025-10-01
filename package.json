@@ -16,7 +16,7 @@
     "@astrojs/solid-js": "^5.1.1",
     "@astrojs/vercel": "^8.2.7",
     "@unocss/preset-uno": "^66.5.1",
-    "@unocss/reset": "^66.5.1",
+    "@unocss/reset": "^66.5.2",
     "astro": "^5.13.7",
     "astro-seo": "^0.8.4",
     "rehype-external-links": "^3.0.0",
