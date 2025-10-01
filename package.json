@@ -21,7 +21,7 @@
     "astro-seo": "^0.8.4",
     "rehype-external-links": "^3.0.0",
     "solid-js": "^1.9.9",
-    "unocss": "^66.5.1",
+    "unocss": "^66.5.2",
     "zod": "^4.1.8"
   },
   "devDependencies": {
