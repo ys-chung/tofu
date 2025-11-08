@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow bun",
     "prep": "tsc --project prepare/tsconfig.json && bun run prepare/dist/index.js",
     "gen": "tsc --project prepare/tsconfig.json && bun run prepare/dist/generate.js",
     "dev": "astro dev",
