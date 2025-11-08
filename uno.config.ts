@@ -1,7 +1,12 @@
-import { defineConfig, presetWind3, presetTypography } from "unocss"
+import {
+  defineConfig,
+  presetWind3,
+  presetTypography,
+  type PresetWind3Theme
+} from "unocss"
 import { font, colors } from "@unocss/preset-wind4/theme"
 
-export default defineConfig({
+export default defineConfig<PresetWind3Theme>({
   presets: [
     presetWind3(),
     presetTypography({
