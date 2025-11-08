@@ -20,6 +20,7 @@ const {
 const image = Astro.site?.origin + Astro.props.image
 const title = `❒ Tofu | ${Astro.props.title}`
 
+import "../styles/global.css"
 import "../private/mori/mori.css"
 ---
 
@@ -71,7 +72,7 @@ import "../private/mori/mori.css"
   <body
     class="bg-stone-50 selection:bg-stone-300 selection:bg-opacity-60 font-sans"
   >
-    <div class="mx-auto max-w-screen-md px-4 pb-4 text-neutral-900">
+    <div class="mx-auto max-w-3xl px-4 pb-4 text-neutral-900">
       <Nav />
       <main>
         <slot />
