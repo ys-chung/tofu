@@ -11,7 +11,7 @@ export enum OverlayDisplayMode {
 import type { langData } from "../../private/data"
 import type { Accessor, Setter } from "solid-js"
 
-export type newLangDataType = ((typeof langData)[number] & {
+export type newLangDataType = (ReturnType<typeof langData>[number] & {
   showOverlay: Accessor<boolean>
   setShowOverlay: Setter<boolean>
 })[]

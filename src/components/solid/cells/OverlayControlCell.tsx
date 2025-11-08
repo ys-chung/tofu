@@ -1,6 +1,17 @@
 import { type Accessor, type Setter, For } from "solid-js"
 import { OverlayDisplayMode, type newLangDataType } from "../util"
 
+const colourClasses: Record<string, string> = {
+  yellow:
+    "bg-yellow-500/0 checked:bg-yellow-500/100 group-hover:bg-yellow-500/10 checked:group-hover:bg-yellow-500/100",
+  red: "bg-red-500/0 checked:bg-red-500/100 group-hover:bg-red-500/10 checked:group-hover:bg-red-500/100",
+  green:
+    "bg-green-500/0 checked:bg-green-500/100 group-hover:bg-green-500/10 checked:group-hover:bg-green-500/100",
+  blue: "bg-blue-500/0 checked:bg-blue-500/100 group-hover:bg-blue-500/10 checked:group-hover:bg-blue-500/100",
+  fuchsia:
+    "bg-fuchsia-500/0 checked:bg-fuchsia-500/100 group-hover:bg-fuchsia-500/10 checked:group-hover:bg-fuchsia-500/100"
+}
+
 export const OverlayControlCell = (props: {
   newLangData: newLangDataType
   overlayMode: Accessor<OverlayDisplayMode>
@@ -21,31 +32,20 @@ export const OverlayControlCell = (props: {
   }
 
   return (
-    <div class="col-span-2 flex flex-col gap-[1px] sm:col-span-1">
+    <div class="col-span-2 flex flex-col gap-px sm:col-span-1">
       <div class="bg-white p-2 text-sm">
         <h2 class="mb-1.5 text-sm font-semibold">Regions</h2>
         <fieldset class="flex flex-col gap-1">
           <For each={newLangData}>
-            {({
-              langAttr,
-              colour,
-              showOverlay,
-              placeName,
-              altPlaceName,
-              setShowOverlay
-            }) => (
+            {({ langAttr, colour, showOverlay, placeName, setShowOverlay }) => (
               <label class="group flex w-min cursor-pointer items-center gap-1 whitespace-nowrap">
                 <input
                   type="checkbox"
                   value={langAttr}
-                  class="h-3 w-3 appearance-none rounded-none border border-stone-400 bg-opacity-0 transition checked:border-none checked:bg-opacity-100 checked:transition-none group-hover:bg-opacity-10 checked:group-hover:bg-opacity-100"
-                  classList={{
-                    "bg-red-500": colour === "red",
-                    "bg-yellow-500": colour === "yellow",
-                    "bg-green-500": colour === "green",
-                    "bg-blue-500": colour === "blue",
-                    "bg-fuchsia-500": colour === "fuchsia"
-                  }}
+                  class={
+                    "h-3 w-3 appearance-none rounded-none border border-stone-400 transition checked:border-none checked:transition-none " +
+                    (colourClasses[colour] || "")
+                  }
                   checked={showOverlay()}
                   onchange={(e) => {
                     if (e.target.checked) {
