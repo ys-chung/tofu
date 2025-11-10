@@ -105,7 +105,7 @@ export const ControlCell = (props: {
             value={weight()}
             min="250"
             max="900"
-            class="peer absolute cursor-ns-resize inset-0 w-full h-full opacity-0 [&::-webkit-slider-thumb]-w-[var(--slider-width)] [&::-webkit-slider-thumb]-h-7"
+            class="peer absolute cursor-ns-resize inset-0 w-full h-full opacity-0 [&::-webkit-slider-thumb]:w-(--slider-width) [&::-webkit-slider-thumb]:h-7"
             style="direction: rtl; writing-mode: vertical-rl"
             aria-label="Weight"
             oninput={(e) => setWeight(parseInt(e.target.value))}
