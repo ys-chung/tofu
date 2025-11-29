@@ -16,17 +16,14 @@ This is enabled by [Source Han Sans / Noto Sans CJK](https://github.com/adobe-fo
 ## Running Locally
 
 ```bash
-npm install
+bun install
 ```
 
-<sub>This project uses [PP Mori](https://pangrampangram.com/products/mori), a commercial typeface that is **not included** in this repository. You must supply your own `PREP_URL` environment variable to this command to place the necessary private files before dev/build.</sub>
+> [!IMPORTANT]
+> Some files such as the commercial typeface files are not included in this repository, and it will not build or run as-is.
 
 ```bash
-PREP_URL=https://example.com npm run prep
-```
-
-```bash
-npm run dev
+bun run dev
 ```
 
 ## License
