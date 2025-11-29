@@ -9,7 +9,7 @@ This is enabled by [Source Han Sans / Noto Sans CJK](https://github.com/adobe-fo
 ## Stack
 
 - Astro
-- UnoCSS
+- Tailwind
 - TypeScript
 - SolidJS
 
