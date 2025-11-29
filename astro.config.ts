@@ -1,6 +1,4 @@
 import { defineConfig } from "astro/config"
-
-import vercel from "@astrojs/vercel"
 import rehypeExternalLinks from "rehype-external-links"
 
 // https://astro.build/config
@@ -36,7 +34,6 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   output: "static",
-  adapter: vercel(),
   site:
     process.env.SITE ??
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
