@@ -64,7 +64,7 @@ export const ControlCell = (props: {
   })
 
   return (
-    <div class="col-span-2 row-span-2 grid aspect-square grid-cols-2 gap-[1px] sm:col-span-1 sm:row-span-1">
+    <div class="col-span-2 row-span-2 grid aspect-square grid-cols-2 gap-px sm:col-span-1 sm:row-span-1">
       {/* Input */}
       <div class="flex aspect-square flex-col gap-2 bg-white p-2 justify-between">
         <h2 class="text-sm font-semibold">Type here</h2>
@@ -84,7 +84,7 @@ export const ControlCell = (props: {
       {/* Samples */}
       <div class="flex aspect-square flex-col gap-2 bg-white p-2">
         <h2 class="text-sm font-semibold">Samples</h2>
-        <div class="grid h-[5rem] grid-cols-2 grid-rows-2 gap-2 sm:h-auto sm:grow">
+        <div class="grid h-20 grid-cols-2 grid-rows-2 gap-2 sm:h-auto sm:grow">
           <Button sampleChar="返" setChar={setChar} />
           <Button sampleChar="扇" setChar={setChar} />
           <Button sampleChar="骨" setChar={setChar} />
@@ -96,7 +96,7 @@ export const ControlCell = (props: {
       <div class="flex aspect-square flex-col gap-2 bg-white p-2">
         <h2 class="text-sm font-semibold">Weight</h2>
         <div
-          class="bg-triangle cover relative grow bg-contain bg-center bg-no-repeat relative"
+          class="bg-triangle cover relative grow bg-contain bg-center bg-no-repeat"
           ref={sliderContainer}
           style={`--slider-width: ${sliderWidth()}px`}
         >
@@ -105,15 +105,15 @@ export const ControlCell = (props: {
             value={weight()}
             min="250"
             max="900"
-            class="peer absolute cursor-ns-resize inset-0 w-full h-full write-vertical-right opacity-0 [&::-webkit-slider-thumb]-w-[var(--slider-width)] [&::-webkit-slider-thumb]-h-7"
-            style="direction: rtl"
+            class="peer absolute cursor-ns-resize inset-0 w-full h-full opacity-0 [&::-webkit-slider-thumb]:w-(--slider-width) [&::-webkit-slider-thumb]:h-7"
+            style="direction: rtl; writing-mode: vertical-rl"
             aria-label="Weight"
             oninput={(e) => setWeight(parseInt(e.target.value))}
           />
 
           <div
-            class="pointer-events-none absolute w-full rounded-full bg-neutral-300 text-center text-sm leading-[1.75rem] text-neutral-900 transition peer-hover:bg-neutral-200 peer-active:bg-neutral-400 
-              peer-active:font-semibold bottom-[calc(var(--offset)*(100%_-_1.75rem))]"
+            class="pointer-events-none absolute w-full rounded-full bg-neutral-300 text-center text-sm leading-7 text-neutral-900 transition peer-hover:bg-neutral-200 peer-active:bg-neutral-400 
+              peer-active:font-semibold bottom-[calc(var(--offset)*(100%-1.75rem))]"
             style={"--offset:" + (weight() - 250) / 650}
           >
             {weight()}

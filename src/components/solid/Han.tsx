@@ -22,7 +22,7 @@ export const Han = (props: { langData: LangData }) => {
   })
 
   return (
-    <div class="grid grid-cols-2 gap-[1px] border border-stone-300 bg-stone-300 sm:grid-cols-3">
+    <div class="grid grid-cols-2 gap-px border border-stone-300 bg-stone-300 sm:grid-cols-3">
       <ControlCell
         char={char}
         setChar={setChar}
