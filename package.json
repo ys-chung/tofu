@@ -5,11 +5,9 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow bun",
-    "prep": "tsc --project scripts/tsconfig.json && bun run scripts/dist/index.js",
-    "gen": "tsc --project scripts/tsconfig.json && bun run scripts/dist/generate.js",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && tsc --project scripts/tsconfig.json && bun run scripts/dist/update-vc-config.js",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
