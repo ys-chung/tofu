@@ -1,20 +1,14 @@
 import { defineConfig } from "astro/config"
-
-import vercel from "@astrojs/vercel"
-import unocss from "unocss/astro"
 import rehypeExternalLinks from "rehype-external-links"
 
 // https://astro.build/config
 import solidJs from "@astrojs/solid-js"
 
+import tailwindcss from "@tailwindcss/vite"
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    unocss({
-      injectReset: true
-    }),
-    solidJs()
-  ],
+  integrations: [solidJs()],
   markdown: {
     rehypePlugins: [
       () =>
@@ -36,10 +30,10 @@ export default defineConfig({
           }
         }
       }
-    }
+    },
+    plugins: [tailwindcss()]
   },
-  output: "server",
-  adapter: vercel(),
+  output: "static",
   site:
     process.env.SITE ??
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)

@@ -20,15 +20,17 @@ export const FontCheck = () => {
   onMount(async () => {
     const fontfaceSet = await document.fonts.ready
 
-    setFontCheckFailed(
-      !(
-        fontfaceSet.check(`12px "Source Han Sans HK"`, "返") &&
-        fontfaceSet.check(`12px "Source Han Sans JP"`, "返") &&
-        fontfaceSet.check(`12px "Source Han Sans KR"`, "返") &&
-        fontfaceSet.check(`12px "Source Han Sans SC"`, "返") &&
-        fontfaceSet.check(`12px "Source Han Sans TC"`, "返")
+    setTimeout(() => {
+      setFontCheckFailed(
+        !(
+          fontfaceSet.check(`12px "Source Han Sans HK"`, "返") &&
+          fontfaceSet.check(`12px "Source Han Sans JP"`, "返") &&
+          fontfaceSet.check(`12px "Source Han Sans KR"`, "返") &&
+          fontfaceSet.check(`12px "Source Han Sans SC"`, "返") &&
+          fontfaceSet.check(`12px "Source Han Sans TC"`, "返")
+        )
       )
-    )
+    }, 100)
   })
 
   return (
