@@ -1,7 +1,7 @@
 ---
 ---
 ## What are CJK characters?
-CJK stands for Chinese, Japanese and Korean. All of these languages have incorporated Chinese characters into their writing systems. They are called Hanzi in Chinese, Kanji in Japanese and Hanja in Korean. They display some characters slightly differently due to [regional variations](https://www.typotheque.com/articles/understanding-cjk-regional-character-variants) that evolved over centuries.
+CJK stands for Chinese, Japanese and Korean. All of these languages have incorporated Chinese characters into their writing systems. They are called Hanzi in Chinese, Kanji in Japanese and Hanja in Korean. They display [some characters differently](https://www.typotheque.com/articles/understanding-cjk-regional-character-variants).
 
 Historically, this has also included Vietnamese, which is why they are sometimes referred to as "CJKV" characters.
 
