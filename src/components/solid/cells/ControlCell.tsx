@@ -20,10 +20,16 @@ export const ControlCell = (props: {
 }) => {
   const { char, setChar, weight, setWeight, mode, setMode } = props
 
+  const segmenter = new Intl.Segmenter()
+
+  const getLastSegment = (value: string) => {
+    return Array.from(segmenter.segment(value)).at(-1)?.segment ?? ""
+  }
+
   const onInput = (e: InputEvent) => {
     if (e.inputType === "insertFromPaste") {
       const target = e.target as HTMLInputElement
-      const newChar = target.value.slice(-1)
+      const newChar = getLastSegment(target.value)
 
       setChar(newChar)
       target.value = newChar
@@ -31,12 +37,12 @@ export const ControlCell = (props: {
     }
 
     if (e.isComposing === false) {
-      setChar(e.data ?? "")
+      setChar(getLastSegment(e.data ?? ""))
     }
   }
 
   const onCompositionEnd = (e: CompositionEvent) => {
-    setChar(e.data ?? "")
+    setChar(getLastSegment(e.data ?? ""))
   }
 
   const onModeChange = (
