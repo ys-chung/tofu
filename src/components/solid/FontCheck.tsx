@@ -38,7 +38,7 @@ export const FontCheck = () => {
   return (
     <>
       {fontCheckFailed() && (
-        <div class="bg-rose-50 p-2 border-stone-300 border border-be-0 text-sm flex flex-col gap-1">
+        <div class="bg-rose-50 p-2 border-stone-300 border border-b-0 text-sm flex flex-col gap-1">
           <h2 class="font-bold text-rose-700 text-base">
             !&#x20DD; Font Loading Failed
           </h2>
