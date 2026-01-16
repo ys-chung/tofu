@@ -4,6 +4,7 @@ export const GridDisplayCell = (props: {
   displayChar: () => string
   weight: Accessor<number>
   fontName: string
+  displayFontName: string
   placeName: string
   langAttr: string
   writingSystemName: string | null
@@ -12,6 +13,7 @@ export const GridDisplayCell = (props: {
     displayChar,
     weight,
     fontName,
+    displayFontName,
     placeName,
     langAttr,
     writingSystemName
@@ -32,7 +34,7 @@ export const GridDisplayCell = (props: {
       >
         {displayChar()}
       </div>
-      <p class="z-10 text-right">{fontName}</p>
+      <p class="z-10 text-right">{displayFontName}</p>
     </div>
   )
 }
