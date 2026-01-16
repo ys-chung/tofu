@@ -1,4 +1,5 @@
 import { createSignal, onMount, Switch, Match } from "solid-js"
+import { hasAllValues } from "./util"
 
 const Anchor = (props: { href: string; text: string }) => {
   return (
@@ -22,15 +23,16 @@ export const FontCheck = () => {
 
     setTimeout(() => {
       setFontCheckFailed(
-        !(
-          fontfaceSet.check(`12px "Source Han Sans HK"`, "返") &&
-          fontfaceSet.check(`12px "Source Han Sans JP"`, "返") &&
-          fontfaceSet.check(`12px "Source Han Sans KR"`, "返") &&
-          fontfaceSet.check(`12px "Source Han Sans SC"`, "返") &&
-          fontfaceSet.check(`12px "Source Han Sans TC"`, "返")
+        !hasAllValues(
+          fontfaceSet.values(),
+          "Noto Sans HK Variable",
+          "Noto Sans JP Variable",
+          "Noto Sans KR Variable",
+          "Noto Sans SC Variable",
+          "Noto Sans TC Variable"
         )
       )
-    }, 100)
+    }, 1000)
   })
 
   return (
