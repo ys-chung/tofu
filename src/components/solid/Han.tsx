@@ -40,6 +40,7 @@ export const Han = (props: { langData: LangData }) => {
                 displayChar={displayChar}
                 weight={weight}
                 fontName={lang.fontName}
+                displayFontName={lang.displayFontName}
                 placeName={lang.placeName}
                 langAttr={lang.langAttr}
                 writingSystemName={lang.writingSystemName}

@@ -7,7 +7,7 @@ export const Button = (props: {
   const { sampleChar, setChar } = props
   return (
     <button
-      class="rounded-full bg-neutral-300 transition hover:bg-neutral-200 active:bg-neutral-400"
+      class="rounded-full bg-neutral-300 transition hover:bg-neutral-200 active:bg-neutral-400 cursor-pointer"
       onclick={() => setChar(sampleChar)}
     >
       {sampleChar}
