@@ -60,6 +60,7 @@ export const ControlCell = (props: {
   const [sliderWidth, setSliderWidth] = createSignal<number>(100)
 
   let sliderContainer: HTMLDivElement | undefined
+  let charField: HTMLInputElement | undefined
 
   onMount(() => {
     setSliderWidth(sliderContainer!.clientWidth)
@@ -67,7 +68,13 @@ export const ControlCell = (props: {
     window.addEventListener("resize", () => {
       setSliderWidth(sliderContainer!.clientWidth)
     })
+
+    if (matchMedia("(hover: hover)").matches && charField) {
+      charField.focus()
+      charField.setSelectionRange(1, 1);
+    }
   })
+
 
   return (
     <div class="col-span-2 row-span-2 grid aspect-square grid-cols-2 gap-px sm:col-span-1 sm:row-span-1">
@@ -83,6 +90,7 @@ export const ControlCell = (props: {
             oncompositionend={onCompositionEnd}
             aria-label="Character"
             value={char()}
+            ref={charField}
           ></input>
         </div>
       </div>
