@@ -6,7 +6,7 @@ import {
   createSignal
 } from "solid-js"
 
-import { Mode } from "../util"
+import { FontMode, Mode } from "../util"
 
 import { Button } from "../Button"
 
@@ -15,10 +15,21 @@ export const ControlCell = (props: {
   setChar: Setter<string>
   weight: Accessor<number>
   setWeight: Setter<number>
-  mode: Accessor<Mode>
-  setMode: Setter<Mode>
+  mode: Accessor<(typeof Mode)[keyof typeof Mode]>
+  setMode: Setter<(typeof Mode)[keyof typeof Mode]>
+  fontMode: Accessor<(typeof FontMode)[keyof typeof FontMode]>
+  setFontMode: Setter<(typeof FontMode)[keyof typeof FontMode]>
 }) => {
-  const { char, setChar, weight, setWeight, mode, setMode } = props
+  const {
+    char,
+    setChar,
+    weight,
+    setWeight,
+    mode,
+    setMode,
+    fontMode,
+    setFontMode
+  } = props
 
   const segmenter = new Intl.Segmenter()
 
@@ -46,7 +57,7 @@ export const ControlCell = (props: {
   }
 
   const onModeChange = (
-    m: Mode,
+    m: (typeof Mode)[keyof typeof Mode],
     e: Event & {
       currentTarget: HTMLInputElement
       target: HTMLInputElement
@@ -57,9 +68,22 @@ export const ControlCell = (props: {
     }
   }
 
+  const onFontModeChange = (
+    m: (typeof FontMode)[keyof typeof FontMode],
+    e: Event & {
+      currentTarget: HTMLInputElement
+      target: HTMLInputElement
+    }
+  ) => {
+    if (e.target.checked) {
+      setFontMode(m)
+    }
+  }
+
   const [sliderWidth, setSliderWidth] = createSignal<number>(100)
 
   let sliderContainer: HTMLDivElement | undefined
+  let charField: HTMLInputElement | undefined
 
   onMount(() => {
     setSliderWidth(sliderContainer!.clientWidth)
@@ -67,6 +91,11 @@ export const ControlCell = (props: {
     window.addEventListener("resize", () => {
       setSliderWidth(sliderContainer!.clientWidth)
     })
+
+    if (matchMedia("(hover: hover)").matches && charField) {
+      charField.focus()
+      charField.setSelectionRange(1, 1)
+    }
   })
 
   return (
@@ -83,6 +112,7 @@ export const ControlCell = (props: {
             oncompositionend={onCompositionEnd}
             aria-label="Character"
             value={char()}
+            ref={charField}
           ></input>
         </div>
       </div>
@@ -128,9 +158,9 @@ export const ControlCell = (props: {
       </div>
 
       {/* Mode */}
-      <div class="flex aspect-square flex-col gap-2 bg-white p-2">
-        <h2 class="text-sm font-semibold">Mode</h2>
+      <div class="flex aspect-square flex-col gap-4 bg-white p-2">
         <fieldset class="flex flex-col gap-1 text-sm">
+          <legend class="text-sm font-semibold block sm:hidden mb-1">Mode</legend>
           <For
             each={
               [
@@ -140,7 +170,7 @@ export const ControlCell = (props: {
             }
           >
             {(itemMode) => (
-              <label class="group flex w-min cursor-pointer items-center gap-1">
+              <label class="group flex w-fit cursor-pointer items-center gap-1">
                 <input
                   type="radio"
                   name="mode"
@@ -148,7 +178,32 @@ export const ControlCell = (props: {
                   onchange={[onModeChange, itemMode[1]]}
                   class="h-3 w-3 appearance-none rounded-full border border-stone-400 transition checked:border-none checked:bg-stone-900 checked:transition-none group-hover:bg-stone-100 checked:group-hover:bg-stone-900"
                 />
-                <span>{itemMode[0]}</span>
+                <span class="nowrap">{itemMode[0]}</span>
+              </label>
+            )}
+          </For>
+        </fieldset>
+
+        <fieldset class="flex flex-col gap-1 text-sm">
+          <legend class="text-sm font-semibold block sm:hidden mb-1">Typeface</legend>
+          <For
+            each={
+              [
+                ["Noto Sans", FontMode.Sans],
+                ["Noto Serif", FontMode.Serif]
+              ] as const
+            }
+          >
+            {(itemMode) => (
+              <label class="group flex w-fit cursor-pointer items-center gap-1">
+                <input
+                  type="radio"
+                  name="fontmode"
+                  checked={fontMode() === itemMode[1]}
+                  onchange={[onFontModeChange, itemMode[1]]}
+                  class="h-3 w-3 appearance-none rounded-full border border-stone-400 transition checked:border-none checked:bg-stone-900 checked:transition-none group-hover:bg-stone-100 checked:group-hover:bg-stone-900"
+                />
+                <span class="nowrap">{itemMode[0]}</span>
               </label>
             )}
           </For>

@@ -1,35 +1,63 @@
 import { type Accessor, For } from "solid-js"
-import { OverlayDisplayMode, type newLangDataType } from "../util"
+import { FontMode, OverlayDisplayMode, type newLangDataType } from "../util"
 
-const colorClasses: Record<string, { stroke: string; fill0: string; fill100: string }> = {
-  red: { stroke: "text-stroke-red-500", fill0: "text-red-500/0", fill100: "text-red-500/100" },
-  yellow: { stroke: "text-stroke-yellow-500", fill0: "text-yellow-600/0", fill100: "text-yellow-600/100" },
-  green: { stroke: "text-stroke-green-500", fill0: "text-green-500/0", fill100: "text-green-500/100" },
-  blue: { stroke: "text-stroke-blue-500", fill0: "text-blue-500/0", fill100: "text-blue-500/100" },
-  fuchsia: { stroke: "text-stroke-fuchsia-500", fill0: "text-fuchsia-500/0", fill100: "text-fuchsia-500/100" },
+const colourClasses: Record<
+  string,
+  { stroke: string; fill0: string; fill100: string }
+> = {
+  red: {
+    stroke: "text-stroke-red-500",
+    fill0: "text-red-500/0",
+    fill100: "text-red-500/100"
+  },
+  yellow: {
+    stroke: "text-stroke-yellow-500",
+    fill0: "text-yellow-600/0",
+    fill100: "text-yellow-600/100"
+  },
+  green: {
+    stroke: "text-stroke-green-500",
+    fill0: "text-green-500/0",
+    fill100: "text-green-500/100"
+  },
+  blue: {
+    stroke: "text-stroke-blue-500",
+    fill0: "text-blue-500/0",
+    fill100: "text-blue-500/100"
+  },
+  fuchsia: {
+    stroke: "text-stroke-fuchsia-500",
+    fill0: "text-fuchsia-500/0",
+    fill100: "text-fuchsia-500/100"
+  }
 }
 
 export const OverlayDisplayCell = (props: {
   newLangData: newLangDataType
   weight: Accessor<number>
   displayChar: () => string
-  overlayMode: Accessor<OverlayDisplayMode>
+  overlayMode: Accessor<string>
+  fontMode: Accessor<(typeof FontMode)[keyof typeof FontMode]>
 }) => {
-  const { newLangData, weight, displayChar, overlayMode } = props
+  const { newLangData, weight, displayChar, overlayMode, fontMode } = props
 
   return (
     <div class="relative col-span-2 row-span-2 aspect-square bg-white p-2 text-sm sm:aspect-auto">
       <For each={newLangData}>
-        {({ langAttr, colour, fontName, showOverlay }) => {
-          const isSolid = () => showOverlay() && overlayMode() === OverlayDisplayMode.Solid
-          const isOutline = () => showOverlay() && overlayMode() === OverlayDisplayMode.Outline
-          const c = colorClasses[colour]
+        {({ langAttr, colour, fontName, serifFontName, showOverlay }) => {
+          const isSolid = () =>
+            showOverlay() && overlayMode() === OverlayDisplayMode.Solid
+          const isOutline = () =>
+            showOverlay() && overlayMode() === OverlayDisplayMode.Outline
+          const selectedFontName = () =>
+            fontMode() === FontMode.Sans ? fontName : serifFontName
+          const c = colourClasses[colour]
 
           return (
             <div
               class="absolute inset-0 select-none text-[18rem] mix-blend-multiply"
               lang={langAttr}
-              style={`font-variation-settings: 'wght' ${weight()}; font-family: ${fontName}, AdobeBlank;`}
+              style={`font-variation-settings: 'wght' ${weight()}; font-family: ${selectedFontName()}, AdobeBlank;`}
             >
               <div
                 class={`absolute inset-0 flex items-center justify-center ${c.stroke}`}

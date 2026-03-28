@@ -14,13 +14,17 @@ const colourClasses: Record<string, string> = {
 
 export const OverlayControlCell = (props: {
   newLangData: newLangDataType
-  overlayMode: Accessor<OverlayDisplayMode>
-  setOverlayMode: Setter<OverlayDisplayMode>
+  overlayMode: Accessor<
+    (typeof OverlayDisplayMode)[keyof typeof OverlayDisplayMode]
+  >
+  setOverlayMode: Setter<
+    (typeof OverlayDisplayMode)[keyof typeof OverlayDisplayMode]
+  >
 }) => {
   const { newLangData, overlayMode, setOverlayMode } = props
 
   const onOverlayModeChange = (
-    m: OverlayDisplayMode,
+    m: (typeof OverlayDisplayMode)[keyof typeof OverlayDisplayMode],
     e: Event & {
       currentTarget: HTMLInputElement
       target: HTMLInputElement
@@ -34,8 +38,8 @@ export const OverlayControlCell = (props: {
   return (
     <div class="col-span-2 flex flex-col gap-px sm:col-span-1">
       <div class="bg-white p-2 text-sm">
-        <h2 class="mb-1.5 text-sm font-semibold">Regions</h2>
         <fieldset class="flex flex-col gap-1">
+          <legend class="mb-1.5 text-sm font-semibold">Regions</legend>
           <For each={newLangData}>
             {({ langAttr, colour, showOverlay, placeName, setShowOverlay }) => (
               <label class="group flex w-min cursor-pointer items-center gap-1 whitespace-nowrap">
@@ -63,8 +67,8 @@ export const OverlayControlCell = (props: {
       </div>
 
       <div class="grow bg-white p-2 text-sm">
-        <h2 class="mb-1.5 text-sm font-semibold">Display</h2>
         <fieldset class="flex flex-col gap-1 text-sm">
+        <legend class="mb-1.5 text-sm font-semibold">Display</legend>
           <For
             each={
               [

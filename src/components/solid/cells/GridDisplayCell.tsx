@@ -12,8 +12,6 @@ export const GridDisplayCell = (props: {
   const {
     displayChar,
     weight,
-    fontName,
-    displayFontName,
     placeName,
     langAttr,
     writingSystemName
@@ -30,11 +28,11 @@ export const GridDisplayCell = (props: {
       <div
         class="absolute inset-0 flex select-none items-center justify-center text-7xl sm:text-9xl pointer-events-none"
         lang={langAttr}
-        style={`font-variation-settings: 'wght' ${weight()}; font-family: ${fontName}, AdobeBlank;`}
+        style={`font-variation-settings: 'wght' ${weight()}; font-family: ${props.fontName}, AdobeBlank;`}
       >
         {displayChar()}
       </div>
-      <p class="z-10 text-right">{displayFontName}</p>
+      <p class="z-10 text-right">{props.displayFontName}</p>
     </div>
   )
 }

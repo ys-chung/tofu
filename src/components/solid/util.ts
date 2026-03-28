@@ -1,12 +1,14 @@
-export enum Mode {
-  Grid,
-  Overlay
-}
+export const Mode = { Grid: "grid", Overlay: "overlay" } as const
 
-export enum OverlayDisplayMode {
-  Outline,
-  Solid
-}
+export const OverlayDisplayMode = {
+  Outline: "outline",
+  Solid: "solid"
+} as const
+
+export const FontMode = {
+  Sans: "sans",
+  Serif: "serif"
+} as const
 
 import type { langData } from "../../private/data"
 import type { Accessor, Setter } from "solid-js"

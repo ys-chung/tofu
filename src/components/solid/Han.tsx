@@ -1,6 +1,6 @@
 import { createSignal, Switch, Match, For } from "solid-js"
 
-import { Mode, OverlayDisplayMode } from "./util"
+import { Mode, OverlayDisplayMode, FontMode } from "./util"
 import { type LangData } from "../../private/data"
 
 import { ControlCell } from "./cells/ControlCell"
@@ -12,10 +12,15 @@ export const Han = (props: { langData: LangData }) => {
   const [char, setChar] = createSignal("返")
   const displayChar = () => char().substring(0, 1)
   const [weight, setWeight] = createSignal<number>(400)
-  const [mode, setMode] = createSignal<Mode>(Mode.Grid)
-  const [overlayMode, setOverlayMode] = createSignal<OverlayDisplayMode>(
-    OverlayDisplayMode.Outline
+  const [mode, setMode] = createSignal<(typeof Mode)[keyof typeof Mode]>(
+    Mode.Grid
   )
+  const [overlayMode, setOverlayMode] = createSignal<
+    (typeof OverlayDisplayMode)[keyof typeof OverlayDisplayMode]
+  >(OverlayDisplayMode.Outline)
+  const [fontMode, setFontMode] = createSignal<
+    (typeof FontMode)[keyof typeof FontMode]
+  >(FontMode.Sans)
   const newLangData = props.langData.map((lang) => {
     const [showOverlay, setShowOverlay] = createSignal(lang.initialShowOverlay)
     return { ...lang, showOverlay, setShowOverlay }
@@ -30,6 +35,8 @@ export const Han = (props: { langData: LangData }) => {
         setWeight={setWeight}
         mode={mode}
         setMode={setMode}
+        fontMode={fontMode}
+        setFontMode={setFontMode}
       />
 
       <Switch>
@@ -39,8 +46,8 @@ export const Han = (props: { langData: LangData }) => {
               <GridDisplayCell
                 displayChar={displayChar}
                 weight={weight}
-                fontName={lang.fontName}
-                displayFontName={lang.displayFontName}
+                fontName={fontMode() === FontMode.Sans ? lang.fontName : lang.serifFontName}
+                displayFontName={fontMode() === FontMode.Sans ? lang.displayFontName : lang.serifDisplayFontName}
                 placeName={lang.placeName}
                 langAttr={lang.langAttr}
                 writingSystemName={lang.writingSystemName}
@@ -55,6 +62,7 @@ export const Han = (props: { langData: LangData }) => {
             weight={weight}
             displayChar={displayChar}
             overlayMode={overlayMode}
+            fontMode={fontMode}
           />
           <OverlayControlCell
             newLangData={newLangData}
