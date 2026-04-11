@@ -1,0 +1,69 @@
+---
+import hkUnicode from "@fontsource-variable/noto-sans-hk/unicode.json"
+import jpUnicode from "@fontsource-variable/noto-sans-jp/unicode.json"
+import krUnicode from "@fontsource-variable/noto-sans-kr/unicode.json"
+import scUnicode from "@fontsource-variable/noto-sans-sc/unicode.json"
+import tcUnicode from "@fontsource-variable/noto-sans-tc/unicode.json"
+
+const { char = "返" } = Astro.props
+
+const fonts = [
+  {
+    id: "noto-sans-hk",
+    unicode: hkUnicode
+  },
+  {
+    id: "noto-sans-jp",
+    unicode: jpUnicode
+  },
+  {
+    id: "noto-sans-kr",
+    unicode: krUnicode
+  },
+  {
+    id: "noto-sans-sc",
+    unicode: scUnicode
+  },
+  {
+    id: "noto-sans-tc",
+    unicode: tcUnicode
+  },
+]
+
+const assetUrls = import.meta.glob(
+  "/node_modules/@fontsource-variable/noto-sans-*/files/*.woff2",
+  { eager: true, import: "default" }
+) as Record<string, string>
+
+function containsCodePoint(ranges: string, cp: number) {
+  return ranges.split(",").some((part) => {
+    const m = part.trim().match(/^U\+([0-9A-F]+)(?:-([0-9A-F]+))?$/i)
+    if (!m) return false
+    const start = parseInt(m[1], 16)
+    const end = m[2] ? parseInt(m[2], 16) : start
+    return cp >= start && cp <= end
+  })
+}
+
+const cp = char.codePointAt(0)!
+
+const hrefs = fonts
+  .map(({ id, unicode }) => {
+    const subset = Object.entries(unicode as Record<string, string>).find(([, ranges]) =>
+      containsCodePoint(ranges, cp)
+    )?.[0]
+
+    if (!subset) return null
+
+    const subsetId = subset.replace(/^\[(.+)\]$/, "$1")
+    const filename = `${id}-${subsetId}-wght-normal.woff2`
+    const key = `/node_modules/@fontsource-variable/${id}/files/${filename}`
+
+    return assetUrls[key] ?? null
+  })
+  .filter(Boolean)
+---
+
+{hrefs.map((href) => (
+  <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />
+))}
