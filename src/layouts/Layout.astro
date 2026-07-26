@@ -3,7 +3,6 @@ import Nav from "../components/Nav.astro"
 import Footer from "../components/Footer.astro"
 import Analytics from "../private/Analytics.astro"
 import FontPreloads from "../components/FontPreloads.astro"
-import { SEO } from "astro-seo"
 
 export interface Props {
   title: string
@@ -14,12 +13,14 @@ export interface Props {
 }
 
 const {
+  title: pageTitle,
   description,
+  image: imagePath,
   imageAlt,
   metaDescription = Astro.props.description
 } = Astro.props
-const image = Astro.site?.origin + Astro.props.image
-const title = `❒ Tofu | ${Astro.props.title}`
+const title = `❒ Tofu | ${pageTitle}`
+const image = new URL(imagePath, Astro.url)
 
 import "../styles/global.css"
 import "../private/mori/mori.css"
@@ -33,43 +34,26 @@ import "../private/mori/mori.css"
     <link rel="icon" href="/favicon.png" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <SEO
-      title={title}
-      description={metaDescription}
-      charset="UTF-8"
-      canonical={Astro.site}
-      extend={{
-        meta: [
-          {
-            name: "title",
-            content: title
-          }
-        ]
-      }}
-      openGraph={{
-        basic: {
-          title,
-          type: "website",
-          image,
-          url: Astro.site
-        },
-        optional: {
-          description,
-          locale: "en_GB",
-          siteName: "Tofu"
-        },
-        image: {
-          alt: imageAlt
-        }
-      }}
-      twitter={{
-        card: "summary_large_image",
-        creator: "@_yschung",
-        title,
-        description,
-        image
-      }}
-    />
+    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <link rel="canonical" href={Astro.site} />
+    <meta name="description" content={metaDescription} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.site} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Tofu" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:url" content={image} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:creator" content="@_yschung" />
+    <meta name="title" content={title} />
 
     <FontPreloads />
   </head>

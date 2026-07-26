@@ -12,8 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^6.0.1",
-    "@astrojs/vercel": "^10.0.2",
+    "@astrojs/solid-js": "^7.0.1",
+    "@astrojs/vercel": "^11.0.3",
     "@fontsource-variable/noto-sans-hk": "^5.2.10",
     "@fontsource-variable/noto-sans-jp": "^5.2.10",
     "@fontsource-variable/noto-sans-kr": "^5.2.10",
@@ -26,9 +26,8 @@
     "@fontsource-variable/noto-serif-tc": "^5.2.10",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.0.8",
-    "astro-seo": "^1.1.0",
-    "rehype-external-links": "^3.0.0",
+    "astro": "^7.1.1",
+    "satteri": "^0.9.5",
     "solid-js": "^1.9.11",
     "tailwindcss": "^4.2.2"
   },

@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config"
-import rehypeExternalLinks from "rehype-external-links"
+import { satteri } from "@astrojs/markdown-satteri"
+import { externalLinks } from "./src/plugins/external-links"
 
 // https://astro.build/config
 import solidJs from "@astrojs/solid-js"
@@ -10,13 +11,7 @@ import tailwindcss from "@tailwindcss/vite"
 export default defineConfig({
   integrations: [solidJs()],
   markdown: {
-    rehypePlugins: [
-      () =>
-        rehypeExternalLinks({
-          target: "_blank",
-          rel: ["noopener", "nofollow", "noreferrer"]
-        })
-    ]
+    processor: satteri({ hastPlugins: [externalLinks] })
   },
   vite: {
     build: {
