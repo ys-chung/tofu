@@ -1,4 +1,4 @@
-import { createSignal, onMount, Switch, Match } from "solid-js"
+import { createSignal, onSettled } from "solid-js"
 import { hasAllValues } from "./util"
 
 const Anchor = (props: { href: string; text: string }) => {
@@ -18,21 +18,30 @@ export const FontCheck = () => {
   const [fontCheckFailed, setFontCheckFailed] = createSignal(false)
   const isMobile = navigator.userAgent.includes("Mobile")
 
-  onMount(async () => {
-    const fontfaceSet = await document.fonts.ready
+  onSettled(() => {
+    let cancelled = false
+    let timeoutId: ReturnType<typeof setTimeout> | undefined
 
-    setTimeout(() => {
-      setFontCheckFailed(
-        !hasAllValues(
-          fontfaceSet.values(),
-          "Noto Sans HK Variable",
-          "Noto Sans JP Variable",
-          "Noto Sans KR Variable",
-          "Noto Sans SC Variable",
-          "Noto Sans TC Variable"
+    void document.fonts.ready.then((fontfaceSet) => {
+      if (cancelled) return
+      timeoutId = setTimeout(() => {
+        setFontCheckFailed(
+          !hasAllValues(
+            fontfaceSet.values(),
+            "Noto Sans HK Variable",
+            "Noto Sans JP Variable",
+            "Noto Sans KR Variable",
+            "Noto Sans SC Variable",
+            "Noto Sans TC Variable"
+          )
         )
-      )
-    }, 1000)
+      }, 1000)
+    })
+
+    return () => {
+      cancelled = true
+      if (timeoutId !== undefined) clearTimeout(timeoutId)
+    }
   })
 
   return (

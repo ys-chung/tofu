@@ -2,7 +2,7 @@ import {
   type Accessor,
   type Setter,
   For,
-  onMount,
+  onSettled,
   createSignal
 } from "solid-js"
 
@@ -20,17 +20,6 @@ export const ControlCell = (props: {
   fontMode: Accessor<(typeof FontMode)[keyof typeof FontMode]>
   setFontMode: Setter<(typeof FontMode)[keyof typeof FontMode]>
 }) => {
-  const {
-    char,
-    setChar,
-    weight,
-    setWeight,
-    mode,
-    setMode,
-    fontMode,
-    setFontMode
-  } = props
-
   const segmenter = new Intl.Segmenter()
 
   const getLastSegment = (value: string) => {
@@ -42,42 +31,18 @@ export const ControlCell = (props: {
       const target = e.target as HTMLInputElement
       const newChar = getLastSegment(target.value)
 
-      setChar(newChar)
+      props.setChar(newChar)
       target.value = newChar
       return
     }
 
     if (e.isComposing === false) {
-      setChar(getLastSegment(e.data ?? ""))
+      props.setChar(getLastSegment(e.data ?? ""))
     }
   }
 
   const onCompositionEnd = (e: CompositionEvent) => {
-    setChar(getLastSegment(e.data ?? ""))
-  }
-
-  const onModeChange = (
-    m: (typeof Mode)[keyof typeof Mode],
-    e: Event & {
-      currentTarget: HTMLInputElement
-      target: HTMLInputElement
-    }
-  ) => {
-    if (e.target.checked) {
-      setMode(m)
-    }
-  }
-
-  const onFontModeChange = (
-    m: (typeof FontMode)[keyof typeof FontMode],
-    e: Event & {
-      currentTarget: HTMLInputElement
-      target: HTMLInputElement
-    }
-  ) => {
-    if (e.target.checked) {
-      setFontMode(m)
-    }
+    props.setChar(getLastSegment(e.data ?? ""))
   }
 
   const [sliderWidth, setSliderWidth] = createSignal<number>(100)
@@ -85,17 +50,20 @@ export const ControlCell = (props: {
   let sliderContainer: HTMLDivElement | undefined
   let charField: HTMLInputElement | undefined
 
-  onMount(() => {
-    setSliderWidth(sliderContainer!.clientWidth)
+  onSettled(() => {
+    const measure = () => {
+      if (sliderContainer) setSliderWidth(sliderContainer.clientWidth)
+    }
+    measure()
 
-    window.addEventListener("resize", () => {
-      setSliderWidth(sliderContainer!.clientWidth)
-    })
+    window.addEventListener("resize", measure)
 
     if (matchMedia("(hover: hover)").matches && charField) {
       charField.focus()
       charField.setSelectionRange(1, 1)
     }
+
+    return () => window.removeEventListener("resize", measure)
   })
 
   return (
@@ -108,11 +76,13 @@ export const ControlCell = (props: {
             type="text"
             name="character"
             class="block w-full text-7xl outline-none sm:text-5xl caret-neutral-500"
-            oninput={onInput}
-            oncompositionend={onCompositionEnd}
+            onInput={onInput}
+            onCompositionEnd={onCompositionEnd}
             aria-label="Character"
-            value={char()}
-            ref={charField}
+            value={props.char()}
+            ref={(el) => {
+              charField = el
+            }}
           ></input>
         </div>
       </div>
@@ -121,10 +91,10 @@ export const ControlCell = (props: {
       <div class="flex aspect-square flex-col gap-2 bg-white p-2">
         <h2 class="text-sm font-semibold">Samples</h2>
         <div class="grid h-20 grid-cols-2 grid-rows-2 gap-2 sm:h-auto sm:grow">
-          <Button sampleChar="返" setChar={setChar} />
-          <Button sampleChar="扇" setChar={setChar} />
-          <Button sampleChar="骨" setChar={setChar} />
-          <Button sampleChar="曜" setChar={setChar} />
+          <Button sampleChar="返" setChar={props.setChar} />
+          <Button sampleChar="扇" setChar={props.setChar} />
+          <Button sampleChar="骨" setChar={props.setChar} />
+          <Button sampleChar="曜" setChar={props.setChar} />
         </div>
       </div>
 
@@ -133,26 +103,28 @@ export const ControlCell = (props: {
         <h2 class="text-sm font-semibold">Weight</h2>
         <div
           class="bg-triangle cover relative grow bg-contain bg-center bg-no-repeat"
-          ref={sliderContainer}
+          ref={(el) => {
+            sliderContainer = el
+          }}
           style={`--slider-width: ${sliderWidth()}px`}
         >
           <input
             type="range"
-            value={weight()}
+            value={props.weight()}
             min="250"
             max="900"
             class="peer absolute cursor-ns-resize inset-0 w-full h-full opacity-0 [&::-webkit-slider-thumb]:w-(--slider-width) [&::-webkit-slider-thumb]:h-7"
             style="direction: rtl; writing-mode: vertical-rl"
             aria-label="Weight"
-            oninput={(e) => setWeight(parseInt(e.target.value))}
+            onInput={(e) => props.setWeight(parseInt(e.currentTarget.value))}
           />
 
           <div
             class="pointer-events-none absolute w-full rounded-full bg-neutral-300 text-center text-sm leading-7 text-neutral-900 transition peer-hover:bg-neutral-200 peer-active:bg-neutral-400 
               peer-active:font-semibold bottom-[calc(var(--offset)*(100%-1.75rem))]"
-            style={"--offset:" + (weight() - 250) / 650}
+            style={"--offset:" + (props.weight() - 250) / 650}
           >
-            {weight()}
+            {props.weight()}
           </div>
         </div>
       </div>
@@ -160,7 +132,9 @@ export const ControlCell = (props: {
       {/* Mode */}
       <div class="flex aspect-square flex-col gap-4 bg-white p-2">
         <fieldset class="flex flex-col gap-1 text-sm">
-          <legend class="text-sm font-semibold block sm:hidden mb-1">Mode</legend>
+          <legend class="text-sm font-semibold block sm:hidden mb-1">
+            Mode
+          </legend>
           <For
             each={
               [
@@ -174,8 +148,12 @@ export const ControlCell = (props: {
                 <input
                   type="radio"
                   name="mode"
-                  checked={mode() === itemMode[1]}
-                  onchange={[onModeChange, itemMode[1]]}
+                  checked={props.mode() === itemMode[1]}
+                  onChange={(e) => {
+                    if (e.currentTarget.checked) {
+                      props.setMode(itemMode[1])
+                    }
+                  }}
                   class="h-3 w-3 appearance-none rounded-full border border-stone-400 transition checked:border-none checked:bg-stone-900 checked:transition-none group-hover:bg-stone-100 checked:group-hover:bg-stone-900"
                 />
                 <span class="nowrap">{itemMode[0]}</span>
@@ -185,7 +163,9 @@ export const ControlCell = (props: {
         </fieldset>
 
         <fieldset class="flex flex-col gap-1 text-sm">
-          <legend class="text-sm font-semibold block sm:hidden mb-1">Typeface</legend>
+          <legend class="text-sm font-semibold block sm:hidden mb-1">
+            Typeface
+          </legend>
           <For
             each={
               [
@@ -199,8 +179,12 @@ export const ControlCell = (props: {
                 <input
                   type="radio"
                   name="fontmode"
-                  checked={fontMode() === itemMode[1]}
-                  onchange={[onFontModeChange, itemMode[1]]}
+                  checked={props.fontMode() === itemMode[1]}
+                  onChange={(e) => {
+                    if (e.currentTarget.checked) {
+                      props.setFontMode(itemMode[1])
+                    }
+                  }}
                   class="h-3 w-3 appearance-none rounded-full border border-stone-400 transition checked:border-none checked:bg-stone-900 checked:transition-none group-hover:bg-stone-100 checked:group-hover:bg-stone-900"
                 />
                 <span class="nowrap">{itemMode[0]}</span>

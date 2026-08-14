@@ -39,44 +39,51 @@ export const OverlayDisplayCell = (props: {
   overlayMode: Accessor<string>
   fontMode: Accessor<(typeof FontMode)[keyof typeof FontMode]>
 }) => {
-  const { newLangData, weight, displayChar, overlayMode, fontMode } = props
-
   return (
     <div class="relative col-span-2 row-span-2 aspect-square bg-white p-2 text-sm sm:aspect-auto">
-      <For each={newLangData}>
-        {({ langAttr, colour, fontName, serifFontName, showOverlay }) => {
+      <For each={props.newLangData}>
+        {(lang) => {
           const isSolid = () =>
-            showOverlay() && overlayMode() === OverlayDisplayMode.Solid
+            lang.showOverlay() &&
+            props.overlayMode() === OverlayDisplayMode.Solid
           const isOutline = () =>
-            showOverlay() && overlayMode() === OverlayDisplayMode.Outline
+            lang.showOverlay() &&
+            props.overlayMode() === OverlayDisplayMode.Outline
           const selectedFontName = () =>
-            fontMode() === FontMode.Sans ? fontName : serifFontName
-          const c = colourClasses[colour]
+            props.fontMode() === FontMode.Sans
+              ? lang.fontName
+              : lang.serifFontName
+          const c = colourClasses[lang.colour]
 
           return (
             <div
               class="absolute inset-0 select-none text-[18rem] mix-blend-multiply"
-              lang={langAttr}
-              style={`font-variation-settings: 'wght' ${weight()}; font-family: ${selectedFontName()}, AdobeBlank;`}
+              lang={lang.langAttr}
+              style={`font-variation-settings: 'wght' ${props.weight()}; font-family: ${selectedFontName()}, AdobeBlank;`}
             >
               <div
-                class={`absolute inset-0 flex items-center justify-center ${c.stroke}`}
-                classList={{
-                  [c.fill0]: !isSolid(),
-                  [c.fill100]: isSolid(),
-                  "text-stroke-2": isOutline()
-                }}
+                class={[
+                  "absolute inset-0 flex items-center justify-center",
+                  c.stroke,
+                  {
+                    [c.fill0]: !isSolid(),
+                    [c.fill100]: isSolid(),
+                    "text-stroke-2": isOutline()
+                  }
+                ]}
               >
-                {displayChar()}
+                {props.displayChar()}
               </div>
               <div
-                class="absolute inset-0 flex items-center justify-center"
-                classList={{
-                  "text-white/0": !isOutline(),
-                  "text-white/100": isOutline()
-                }}
+                class={[
+                  "absolute inset-0 flex items-center justify-center",
+                  {
+                    "text-white/0": !isOutline(),
+                    "text-white/100": isOutline()
+                  }
+                ]}
               >
-                {displayChar()}
+                {props.displayChar()}
               </div>
             </div>
           )

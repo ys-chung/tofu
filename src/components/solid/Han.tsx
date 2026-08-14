@@ -1,4 +1,4 @@
-import { createSignal, Switch, Match, For } from "solid-js"
+import { createSignal, Switch, Match, For, untrack } from "solid-js"
 
 import { Mode, OverlayDisplayMode, FontMode } from "./util"
 import { type LangData } from "../../private/data"
@@ -21,10 +21,14 @@ export const Han = (props: { langData: LangData }) => {
   const [fontMode, setFontMode] = createSignal<
     (typeof FontMode)[keyof typeof FontMode]
   >(FontMode.Sans)
-  const newLangData = props.langData.map((lang) => {
-    const [showOverlay, setShowOverlay] = createSignal(lang.initialShowOverlay)
-    return { ...lang, showOverlay, setShowOverlay }
-  })
+  const newLangData = untrack(() =>
+    props.langData.map((lang) => {
+      const [showOverlay, setShowOverlay] = createSignal(
+        lang.initialShowOverlay
+      )
+      return { ...lang, showOverlay, setShowOverlay }
+    })
+  )
 
   return (
     <div class="grid grid-cols-2 gap-px border border-stone-300 bg-stone-300 sm:grid-cols-3">
@@ -46,8 +50,16 @@ export const Han = (props: { langData: LangData }) => {
               <GridDisplayCell
                 displayChar={displayChar}
                 weight={weight}
-                fontName={fontMode() === FontMode.Sans ? lang.fontName : lang.serifFontName}
-                displayFontName={fontMode() === FontMode.Sans ? lang.displayFontName : lang.serifDisplayFontName}
+                fontName={
+                  fontMode() === FontMode.Sans
+                    ? lang.fontName
+                    : lang.serifFontName
+                }
+                displayFontName={
+                  fontMode() === FontMode.Sans
+                    ? lang.displayFontName
+                    : lang.serifDisplayFontName
+                }
                 placeName={lang.placeName}
                 langAttr={lang.langAttr}
                 writingSystemName={lang.writingSystemName}

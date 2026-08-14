@@ -4,7 +4,6 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow bun",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -12,6 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.3.5",
     "@astrojs/solid-js": "^7.0.1",
     "@astrojs/vercel": "^11.0.3",
     "@fontsource-variable/noto-sans-hk": "^5.2.10",
@@ -24,17 +24,29 @@
     "@fontsource-variable/noto-serif-kr": "^5.2.10",
     "@fontsource-variable/noto-serif-sc": "^5.2.10",
     "@fontsource-variable/noto-serif-tc": "^5.2.10",
+    "@solidjs/vite-plugin": "^3.0.0-next.28",
+    "@solidjs/web": "^2.0.0-rc.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^7.1.1",
     "satteri": "^0.9.5",
-    "solid-js": "^1.9.11",
+    "solid-js": "^2.0.0-rc.0",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0",
+    "@types/node": "^26.2.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "nub",
+      "version": "^0.7.5",
+      "onFail": "ignore"
+    }
+  },
+  "overrides": {
+    "solid-js": "2.0.0-rc.0"
   }
 }

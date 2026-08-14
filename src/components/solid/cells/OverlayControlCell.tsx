@@ -21,45 +21,27 @@ export const OverlayControlCell = (props: {
     (typeof OverlayDisplayMode)[keyof typeof OverlayDisplayMode]
   >
 }) => {
-  const { newLangData, overlayMode, setOverlayMode } = props
-
-  const onOverlayModeChange = (
-    m: (typeof OverlayDisplayMode)[keyof typeof OverlayDisplayMode],
-    e: Event & {
-      currentTarget: HTMLInputElement
-      target: HTMLInputElement
-    }
-  ) => {
-    if (e.target.checked) {
-      setOverlayMode(m)
-    }
-  }
-
   return (
     <div class="col-span-2 flex flex-col gap-px sm:col-span-1">
       <div class="bg-white p-2 text-sm">
         <fieldset class="flex flex-col gap-1">
           <legend class="mb-1.5 text-sm font-semibold">Regions</legend>
-          <For each={newLangData}>
-            {({ langAttr, colour, showOverlay, placeName, setShowOverlay }) => (
+          <For each={props.newLangData}>
+            {(lang) => (
               <label class="group flex w-min cursor-pointer items-center gap-1 whitespace-nowrap">
                 <input
                   type="checkbox"
-                  value={langAttr}
+                  value={lang.langAttr}
                   class={
                     "h-3 w-3 appearance-none rounded-none border border-stone-400 transition checked:border-none checked:transition-none " +
-                    (colourClasses[colour] || "")
+                    (colourClasses[lang.colour] || "")
                   }
-                  checked={showOverlay()}
-                  onchange={(e) => {
-                    if (e.target.checked) {
-                      setShowOverlay(true)
-                    } else {
-                      setShowOverlay(false)
-                    }
+                  checked={lang.showOverlay()}
+                  onChange={(e) => {
+                    lang.setShowOverlay(e.currentTarget.checked)
                   }}
                 />
-                {placeName}
+                {lang.placeName}
               </label>
             )}
           </For>
@@ -68,7 +50,7 @@ export const OverlayControlCell = (props: {
 
       <div class="grow bg-white p-2 text-sm">
         <fieldset class="flex flex-col gap-1 text-sm">
-        <legend class="mb-1.5 text-sm font-semibold">Display</legend>
+          <legend class="mb-1.5 text-sm font-semibold">Display</legend>
           <For
             each={
               [
@@ -82,8 +64,12 @@ export const OverlayControlCell = (props: {
                 <input
                   type="radio"
                   name="overlayMode"
-                  checked={overlayMode() === itemMode[1]}
-                  onchange={[onOverlayModeChange, itemMode[1]]}
+                  checked={props.overlayMode() === itemMode[1]}
+                  onChange={(e) => {
+                    if (e.currentTarget.checked) {
+                      props.setOverlayMode(itemMode[1])
+                    }
+                  }}
                   class="h-3 w-3 appearance-none rounded-full border border-stone-400 transition checked:border-none checked:bg-stone-900 checked:transition-none group-hover:bg-stone-100 checked:group-hover:bg-stone-900"
                 />
                 <span>{itemMode[0]}</span>
