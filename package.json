@@ -11,32 +11,32 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdown-satteri": "^0.3.5",
-    "@astrojs/solid-js": "^7.0.1",
-    "@astrojs/vercel": "^11.0.3",
-    "@fontsource-variable/noto-sans-hk": "^5.2.10",
-    "@fontsource-variable/noto-sans-jp": "^5.2.10",
-    "@fontsource-variable/noto-sans-kr": "^5.2.10",
-    "@fontsource-variable/noto-sans-sc": "^5.2.10",
-    "@fontsource-variable/noto-sans-tc": "^5.2.10",
-    "@fontsource-variable/noto-serif-hk": "^5.2.10",
-    "@fontsource-variable/noto-serif-jp": "^5.2.9",
-    "@fontsource-variable/noto-serif-kr": "^5.2.10",
-    "@fontsource-variable/noto-serif-sc": "^5.2.10",
-    "@fontsource-variable/noto-serif-tc": "^5.2.10",
-    "@solidjs/vite-plugin": "^3.0.0-next.28",
-    "@solidjs/web": "^2.0.0-rc.0",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.2.2",
-    "astro": "^7.1.1",
-    "satteri": "^0.9.5",
-    "solid-js": "^2.0.0-rc.0",
-    "tailwindcss": "^4.2.2"
+    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/solid-js": "^7.0.2",
+    "@astrojs/vercel": "^11.0.10",
+    "@fontsource-variable/noto-sans-hk": "^5.3.0",
+    "@fontsource-variable/noto-sans-jp": "^5.3.0",
+    "@fontsource-variable/noto-sans-kr": "^5.3.0",
+    "@fontsource-variable/noto-sans-sc": "^5.3.0",
+    "@fontsource-variable/noto-sans-tc": "^5.3.0",
+    "@fontsource-variable/noto-serif-hk": "^5.3.0",
+    "@fontsource-variable/noto-serif-jp": "^5.3.0",
+    "@fontsource-variable/noto-serif-kr": "^5.3.0",
+    "@fontsource-variable/noto-serif-sc": "^5.3.0",
+    "@fontsource-variable/noto-serif-tc": "^5.3.0",
+    "@solidjs/vite-plugin": "^3.0.0-next.44",
+    "@solidjs/web": "^2.0.0-rc.9",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.3",
+    "satteri": "^0.10.5",
+    "solid-js": "^2.0.0-rc.9",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@types/node": "^26.2.0",
-    "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1",
+    "@types/node": "^26.6.1",
+    "prettier": "^3.9.8",
+    "prettier-plugin-astro": "^1.0.1",
     "typescript": "^7.0.2"
   },
   "devEngines": {
@@ -47,6 +47,6 @@
     }
   },
   "overrides": {
-    "solid-js": "2.0.0-rc.0"
+    "solid-js": "2.0.0-rc.9"
   }
 }
